@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMK Solutions - AI & Geospatial Data</title>
+    <style>
+        :root {
+            --color-black: rgba(0, 0, 0, 1);
+            --color-matrix-dark: rgba(13, 2, 8, 1);
+            --color-matrix-darker: rgba(7, 20, 17, 1);
+            --color-matrix-green: rgba(0, 255, 65, 1);
+            --color-matrix-green-bright: rgba(0, 255, 102, 1);
+            --color-matrix-green-dim: rgba(0, 143, 17, 1);
+            --color-matrix-teal: rgba(0, 209, 160, 1);
+            --color-matrix-mint: rgba(143, 224, 193, 1);
+            --color-gray-200: rgba(40, 40, 40, 1);
+            --color-gray-300: rgba(60, 60, 60, 1);
+            --color-gray-400: rgba(80, 80, 80, 1);
+            --color-white: rgba(255, 255, 255, 1);
+
+            --color-background: var(--color-matrix-darker);
+            --color-surface: var(--color-matrix-dark);
+            --color-text: var(--color-white);
+            --color-text-secondary: var(--color-matrix-mint);
+            --color-primary: var(--color-matrix-green);
+            --color-primary-hover: var(--color-matrix-green-bright);
+            --color-primary-active: var(--color-matrix-green-dim);
+            --color-border: rgba(0, 255, 65, 0.15);
+            --color-btn-primary-text: var(--color-matrix-darker);
+
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-normal: 1.5;
+            --line-height-tight: 1.2;
+
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: var(--color-matrix-darker);
+                --color-surface: var(--color-matrix-dark);
+                --color-text: var(--color-white);
+                --color-text-secondary: var(--color-matrix-mint);
+                --color-primary: var(--color-matrix-green);
+                --color-primary-hover: var(--color-matrix-green-bright);
+                --color-primary-active: var(--color-matrix-green-dim);
+                --color-border: rgba(0, 255, 65, 0.15);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+            margin-bottom: var(--space-16);
+        }
+
+        h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-tight);
+            margin-bottom: var(--space-16);
+        }
+
+        h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-12);
+        }
+
+        p {
+            margin-bottom: var(--space-16);
+            line-height: var(--line-height-normal);
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--duration-fast);
+        }
+
+        a:hover {
+            color: var(--color-primary-hover);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-16) var(--space-20);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-20);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: var(--font-weight-medium);
+            transition: color var(--duration-fast);
+            padding: var(--space-8) var(--space-12);
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-links a:hover {
+            background: var(--color-border);
+        }
+
+        .nav-links a.active {
+            color: var(--color-primary);
+            font-weight: var(--font-weight-bold);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-32) var(--space-20);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn var(--duration-normal);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Home Page */
+        .hero {
+            margin-bottom: var(--space-32);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: var(--space-16);
+            line-height: var(--line-height-tight);
+        }
+
+        .hero p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-20);
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--space-12);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--duration-fast);
+            border: none;
+            text-decoration: none;
+            font-size: var(--font-size-base);
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn--primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .btn--secondary:hover {
+            background: var(--color-border);
+        }
+
+        /* About Page */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+            margin-bottom: var(--space-32);
+        }
+
+        .about-section {
+            padding: var(--space-24);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+        }
+
+        .about-section h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-16);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+            margin-bottom: var(--space-16);
+        }
+
+        .tag {
+            background: rgba(0, 255, 65, 0.12);
+            color: var(--color-matrix-green);
+            padding: var(--space-4) var(--space-12);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            display: inline-block;
+            border: 1px solid rgba(0, 255, 65, 0.25);
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+        }
+
+        /* Projects Page */
+        .filter-container {
+            display: flex;
+            gap: var(--space-8);
+            margin-bottom: var(--space-24);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: var(--space-8) var(--space-16);
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+            transition: all var(--duration-fast);
+        }
+
+        .filter-btn:hover {
+            background: var(--color-border);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border-color: var(--color-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-24);
+        }
+
+        .project-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            transition: all var(--duration-normal);
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            transform: translateY(-4px);
+            border-color: var(--color-primary);
+        }
+
+        .project-card h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-12);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+            margin-top: var(--space-16);
+        }
+
+        .project-tag {
+            background: rgba(0, 255, 65, 0.08);
+            color: var(--color-matrix-green);
+            padding: var(--space-4) var(--space-10);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: var(--font-weight-medium);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        /* Articles Page */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-24);
+        }
+
+        .article-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            transition: all var(--duration-normal);
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            transform: translateY(-4px);
+            border-color: var(--color-primary);
+        }
+
+        .article-card h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-8);
+        }
+
+        .article-date {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-12);
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+            margin-top: var(--space-16);
+        }
+
+        .article-tag {
+            background: rgba(0, 255, 65, 0.08);
+            color: var(--color-matrix-green);
+            padding: var(--space-4) var(--space-10);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: var(--font-weight-medium);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-24) var(--space-20);
+            margin-top: var(--space-32);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-16);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-16);
+            list-style: none;
+        }
+
+        .social-links a {
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: var(--space-12);
+            }
+
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                flex-direction: column;
+                gap: var(--space-12);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: var(--space-8);
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: var(--space-12);
+            }
+
+            .filter-container {
+                gap: var(--space-6);
+            }
+
+            .filter-btn {
+                font-size: 12px;
+                padding: var(--space-6) var(--space-12);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand">RMK Solutions</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#projects" class="nav-link" data-page="projects">Projects</a></li>
+                <li><a href="#articles" class="nav-link" data-page="articles">Articles</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Pages -->
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="container">
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>AI & Geospatial Solutions for Environmental Justice</h1>
+                        <p>Leveraging machine learning, satellite imagery, and climate data to build intelligent systems for sustainability and environmental resilience.</p>
+                        <div class="button-group">
+                            <a href="#projects" class="btn btn--primary">View Projects</a>
+                            <a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">LinkedIn</a>
+                            <a href="https://ryankmetz.com" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Website</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-grid">
+                    <div class="about-section">
+                        <h3>Background</h3>
+                        <p>I'm an AI and data scientist specializing in geospatial analysis, machine learning, and environmental justice applications. With expertise spanning climate resilience, satellite imagery processing, and full-stack development, I build intelligent systems to address sustainability challenges.</p>
+                        <p>My work focuses on creating accessible, open-source tools that enable communities and organizations to leverage climate data and AI for decision-making.</p>
+                    </div>
+                    <div class="about-section">
+                        <h3>Core Expertise</h3>
+                        <div class="tech-stack">
+                            <span class="tag">Python</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Geospatial Analysis</span>
+                            <span class="tag">Satellite Imagery</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Data Science</span>
+                            <span class="tag">AI/LLM</span>
+                            <span class="tag">Climate Data</span>
+                        </div>
+                        <p style="margin-top: var(--space-16);">Tools: TensorFlow, PyTorch, GDAL, Rasterio, Jupyter, Vercel, GitHub, Google AI Studio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Page -->
+        <div id="projects" class="page">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <p>Filter by topic to explore my recent work in AI, environmental justice, and geospatial analysis.</p>
+                
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="data-science">Data Science</button>
+                    <button class="filter-btn" data-filter="gis">GIS</button>
+                    <button class="filter-btn" data-filter="ai">AI</button>
+                    <button class="filter-btn" data-filter="ml">ML</button>
+                    <button class="filter-btn" data-filter="llm">LLM</button>
+                    <button class="filter-btn" data-filter="education">Education</button>
+                    <button class="filter-btn" data-filter="environmental">Environmental</button>
+                    <button class="filter-btn" data-filter="climate">Climate</button>
+                </div>
+
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Projects will be populated here -->
+                    <div class="project-card">
+                        <h3>Add Your First Project</h3>
+                        <p>Projects will appear here. Use the filter tags to organize your work across categories like AI, GIS, environmental justice, and climate analysis.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">environmental</span>
+                            <span class="project-tag">ai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Articles Page -->
+        <div id="articles" class="page">
+            <div class="container">
+                <h2>Articles & Insights</h2>
+                <p>Thoughts on AI, environmental justice, geospatial analysis, and sustainable technology.</p>
+                
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="data-science">Data Science</button>
+                    <button class="filter-btn" data-filter="gis">GIS</button>
+                    <button class="filter-btn" data-filter="ai">AI</button>
+                    <button class="filter-btn" data-filter="ml">ML</button>
+                    <button class="filter-btn" data-filter="llm">LLM</button>
+                    <button class="filter-btn" data-filter="education">Education</button>
+                    <button class="filter-btn" data-filter="environmental">Environmental</button>
+                    <button class="filter-btn" data-filter="climate">Climate</button>
+                </div>
+
+                <div class="articles-grid" id="articlesGrid">
+                    <!-- Articles will be populated here -->
+                    <div class="article-card">
+                        <h3>Add Your First Article</h3>
+                        <p class="article-date">Coming soon</p>
+                        <p>Articles will appear here. Use the filter tags to organize your writing across topics like AI, climate data, and environmental justice.</p>
+                        <div class="article-tags">
+                            <span class="article-tag">environmental</span>
+                            <span class="article-tag">ai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 RMK Solutions. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://ryankmetz.com" target="_blank" rel="noopener noreferrer">Website</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                
+                // Update nav links
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Update pages
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update hash
+                window.history.pushState(null, null, '#' + pageId);
+            });
+        });
+
+        // Handle direct hash navigation
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.slice(1) || 'home';
+            const pageLink = document.querySelector(`[data-page="${hash}"]`);
+            if (pageLink) pageLink.click();
+        });
+
+        // Project Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectsGrid = document.getElementById('projectsGrid');
+
+        // Sample projects - you can add more here
+        const projects = [
+            {
+                title: 'Environmental Justice AI Platform',
+                description: 'Open-source platform integrating US environmental datasets with machine learning for climate risk assessment and community analysis.',
+                tags: ['environmental', 'ai', 'data-science', 'gis', 'climate'],
+                url: '#'
+            },
+            {
+                title: 'Satellite Nameplate Identification',
+                description: 'Deep learning system for identifying HVAC nameplates from satellite imagery to enable municipal energy management.',
+                tags: ['ai', 'ml', 'gis', 'environmental'],
+                url: '#'
+            },
+            {
+                title: 'Climate Data Analysis Toolkit',
+                description: 'Python toolkit for processing and visualizing climate datasets with integrated geospatial analysis capabilities.',
+                tags: ['data-science', 'gis', 'climate', 'environmental'],
+                url: '#'
+            },
+            {
+                title: 'Energy Manager AI Agent',
+                description: 'Intelligent agent for building automation, energy bill analysis, and optimization recommendations using LLMs.',
+                tags: ['ai', 'llm', 'environmental'],
+                url: '#'
+            },
+            {
+                title: 'Fox Facts Educational App',
+                description: 'Interactive Streamlit application teaching climate science and environmental literacy with dynamic content.',
+                tags: ['education', 'environmental', 'climate'],
+                url: '#'
+            }
+        ];
+
+        // Sample articles - you can add more here
+        const articles = [
+            {
+                title: 'Getting Started with Geospatial AI',
+                description: 'A practical guide to leveraging satellite imagery and machine learning for environmental analysis.',
+                date: 'January 15, 2025',
+                tags: ['ai', 'gis', 'data-science', 'education'],
+                url: '#'
+            },
+            {
+                title: 'Climate Justice through Data Science',
+                description: 'How accessible climate data and AI tools can empower communities to understand and respond to environmental challenges.',
+                date: 'January 10, 2025',
+                tags: ['environmental', 'climate', 'ai', 'education'],
+                url: '#'
+            },
+            {
+                title: 'Building LLM Agents for Sustainability',
+                description: 'Exploring how language models can be adapted to solve real-world environmental and energy management problems.',
+                date: 'January 5, 2025',
+                tags: ['llm', 'ai', 'environmental'],
+                url: '#'
+            }
+        ];
+
+        function renderProjects(filter = 'all') {
+            projectsGrid.innerHTML = '';
+            
+            const filtered = filter === 'all' 
+                ? projects 
+                : projects.filter(p => p.tags.includes(filter));
+
+            if (filtered.length === 0) {
+                projectsGrid.innerHTML = '<div class="project-card"><h3>No projects found</h3><p>Try a different filter.</p></div>';
+                return;
+            }
+
+            filtered.forEach(project => {
+                const card = document.createElement('a');
+                card.href = project.url;
+                card.className = 'project-card';
+                card.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <div class="project-tags">
+                        ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                    </div>
+                `;
+                projectsGrid.appendChild(card);
+            });
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                renderProjects(filter);
+            });
+        });
+
+        // Article Filtering
+        const articleFilterBtns = document.querySelectorAll('#articles .filter-btn');
+        const articlesGrid = document.getElementById('articlesGrid');
+
+        function renderArticles(filter = 'all') {
+            articlesGrid.innerHTML = '';
+            
+            const filtered = filter === 'all' 
+                ? articles 
+                : articles.filter(a => a.tags.includes(filter));
+
+            if (filtered.length === 0) {
+                articlesGrid.innerHTML = '<div class="article-card"><h3>No articles found</h3><p>Try a different filter.</p></div>';
+                return;
+            }
+
+            filtered.forEach(article => {
+                const card = document.createElement('a');
+                card.href = article.url;
+                card.className = 'article-card';
+                card.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p class="article-date">${article.date}</p>
+                    <p>${article.description}</p>
+                    <div class="article-tags">
+                        ${article.tags.map(tag => `<span class="article-tag">${tag}</span>`).join('')}
+                    </div>
+                `;
+                articlesGrid.appendChild(card);
+            });
+        }
+
+        articleFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                articleFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                renderArticles(filter);
+            });
+        });
+
+        // Initial render
+        renderProjects();
+        renderArticles();
+
+        // Load page from URL hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.slice(1) || 'home';
+            const pageLink = document.querySelector(`[data-page="${hash}"]`);
+            if (pageLink) pageLink.click();
+        });
+    </script>
+</body>
+</html>
