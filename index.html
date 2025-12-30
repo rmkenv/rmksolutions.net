@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>RMK Solutions - AI & Geospatial Solutions for Environmental Justice</title>
-    <meta name="title" content="RMK Solutions - AI & Geospatial Data Expert">
-    <meta name="description" content="Ryan Kmetz specializes in AI, machine learning, geospatial analysis, and environmental justice applications. Building intelligent systems with satellite imagery and climate data for sustainability.">
-    <meta name="keywords" content="AI, machine learning, geospatial analysis, environmental justice, climate data, satellite imagery, data science, GIS, LLM, Python">
+    <title>RMK Solutions - AI & Data Scientist | Environmental Justice, Climate & Energy</title>
+    <meta name="title" content="RMK Solutions - AI & Data Scientist">
+    <meta name="description" content="Ryan Kmetz - AI and Data Scientist specializing in environmental justice, climate science, and energy systems. Building machine learning solutions for sustainability using geospatial analysis and satellite imagery.">
+    <meta name="keywords" content="AI, machine learning, data science, environmental justice, climate science, energy systems, geospatial analysis, satellite imagery, sustainability, Python">
     <meta name="author" content="Ryan Kmetz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://rmksolutions.net">
@@ -16,16 +16,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rmksolutions.net">
-    <meta property="og:title" content="RMK Solutions - AI & Geospatial Solutions for Environmental Justice">
-    <meta property="og:description" content="Leveraging machine learning, satellite imagery, and climate data to build intelligent systems for sustainability and environmental resilience.">
+    <meta property="og:title" content="RMK Solutions - AI & Data Scientist | Environmental Justice, Climate & Energy">
+    <meta property="og:description" content="AI and Data Scientist specializing in environmental justice, climate science, and energy systems. Building machine learning solutions for sustainability.">
     <meta property="og:image" content="https://rmksolutions.net/og-image.jpg">
     <meta property="og:site_name" content="RMK Solutions">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rmksolutions.net">
-    <meta name="twitter:title" content="RMK Solutions - AI & Geospatial Data Expert">
-    <meta name="twitter:description" content="Leveraging machine learning, satellite imagery, and climate data to build intelligent systems for sustainability and environmental resilience.">
+    <meta name="twitter:title" content="RMK Solutions - AI & Data Scientist">
+    <meta name="twitter:description" content="AI and Data Scientist specializing in environmental justice, climate science, and energy systems. Building machine learning solutions for sustainability.">
     <meta name="twitter:image" content="https://rmksolutions.net/og-image.jpg">
     
     <!-- JSON-LD Structured Data for AI Crawlers -->
@@ -41,26 +41,24 @@
         "https://github.com/ryankmetz",
         "https://ryankmetz.com"
       ],
-      "jobTitle": "AI Engineer & Data Scientist",
+      "jobTitle": "AI and Data Scientist",
       "worksFor": {
         "@type": "Organization",
         "name": "RMK Solutions"
       },
-      "alumniOf": {
-        "@type": "Organization",
-        "name": "Environmental Justice & AI Research"
-      },
       "knowsAbout": [
         "Artificial Intelligence",
+        "Data Science",
         "Machine Learning",
-        "Geospatial Analysis",
         "Environmental Justice",
-        "Climate Data Science",
-        "Satellite Imagery Processing",
+        "Climate Science",
+        "Energy Systems",
+        "Geospatial Analysis",
+        "Sustainability Technology",
         "Python Programming",
-        "Data Visualization"
+        "Satellite Imagery Processing"
       ],
-      "description": "AI and data scientist specializing in geospatial analysis, machine learning, and environmental justice applications"
+      "description": "AI and Data Scientist specializing in environmental justice, climate science, and energy systems with expertise in machine learning and geospatial analysis"
     }
     </script>
     
@@ -70,7 +68,7 @@
       "@type": "WebSite",
       "name": "RMK Solutions",
       "url": "https://rmksolutions.net",
-      "description": "AI & Geospatial Solutions for Environmental Justice",
+      "description": "AI & Data Scientist specializing in environmental justice, climate science, and energy systems",
       "author": {
         "@type": "Person",
         "name": "Ryan Kmetz"
@@ -130,6 +128,7 @@
             --radius-base: 8px;
             --radius-md: 10px;
             --radius-lg: 12px;
+            --radius-full: 9999px;
 
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
@@ -235,6 +234,7 @@
             display: flex;
             gap: var(--space-20);
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -251,6 +251,30 @@
         .nav-links a.active {
             color: var(--color-primary);
             font-weight: var(--font-weight-bold);
+        }
+
+        .coffee-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-8);
+            padding: var(--space-8) var(--space-16);
+            background: #FFDD00;
+            color: #000000;
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-medium);
+            transition: all var(--duration-fast);
+            font-size: var(--font-size-base);
+        }
+
+        .coffee-btn:hover {
+            background: #FFED4E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 221, 0, 0.3);
+        }
+
+        .coffee-icon {
+            width: 20px;
+            height: 20px;
         }
 
         /* Container */
@@ -373,7 +397,7 @@
             color: var(--color-matrix-green);
             padding: var(--space-4) var(--space-12);
             border-radius: var(--radius-full);
-            font-size: var(--font-size-sm);
+            font-size: 12px;
             font-weight: var(--font-weight-medium);
             display: inline-block;
             border: 1px solid rgba(0, 255, 65, 0.25);
@@ -396,7 +420,7 @@
             border-radius: var(--radius-full);
             cursor: pointer;
             font-weight: var(--font-weight-medium);
-            font-size: var(--font-size-sm);
+            font-size: var(--font-size-base);
             transition: all var(--duration-fast);
         }
 
@@ -449,7 +473,7 @@
         .project-tag {
             background: rgba(0, 255, 65, 0.08);
             color: var(--color-matrix-green);
-            padding: var(--space-4) var(--space-10);
+            padding: var(--space-4) var(--space-12);
             border-radius: var(--radius-sm);
             font-size: 12px;
             font-weight: var(--font-weight-medium);
@@ -488,7 +512,7 @@
 
         .article-date {
             color: var(--color-text-secondary);
-            font-size: var(--font-size-sm);
+            font-size: 13px;
             margin-bottom: var(--space-12);
         }
 
@@ -502,7 +526,7 @@
         .article-tag {
             background: rgba(0, 255, 65, 0.08);
             color: var(--color-matrix-green);
-            padding: var(--space-4) var(--space-10);
+            padding: var(--space-4) var(--space-12);
             border-radius: var(--radius-sm);
             font-size: 12px;
             font-weight: var(--font-weight-medium);
@@ -576,13 +600,20 @@
             }
 
             .nav-links {
-                flex-direction: column;
+                flex-wrap: wrap;
                 gap: var(--space-8);
                 width: 100%;
+                justify-content: center;
             }
 
             .nav-links a {
-                padding: var(--space-12);
+                padding: var(--space-8);
+                font-size: 13px;
+            }
+
+            .coffee-btn {
+                padding: var(--space-6) var(--space-12);
+                font-size: 13px;
             }
 
             .filter-container {
@@ -606,6 +637,33 @@
                 <li><a href="#about" class="nav-link" data-page="about">About</a></li>
                 <li><a href="#projects" class="nav-link" data-page="projects">Projects</a></li>
                 <li><a href="#articles" class="nav-link" data-page="articles">Articles</a></li>
+                <li>
+                    <a href="https://buymeacoffee.com/kmetzrm" target="_blank" rel="noopener noreferrer" class="coffee-btn">
+                        <svg class="coffee-icon" viewBox="0 0 884 1279" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M791.109 297.518L790.231 297.002L788.201 296.383C789.018 297.072 790.04 297.472 791.109 297.518Z" fill="#0D0C22"/>
+                            <path d="M803.896 388.891L803.784 388.726L803.738 388.37L803.896 388.891Z" fill="#0D0C22"/>
+                            <path d="M791.484 297.377C791.359 297.361 791.237 297.332 791.118 297.29C791.111 297.371 791.111 297.453 791.118 297.534C791.252 297.516 791.368 297.462 791.484 297.377Z" fill="#0D0C22"/>
+                            <path d="M791.113 297.529H791.244V297.447L791.113 297.529Z" fill="#0D0C22"/>
+                            <path d="M803.111 388.726L804.591 390.607L804.004 388.207L803.111 388.726Z" fill="#0D0C22"/>
+                            <path d="M793.669 299.515L792.223 298.138L791.243 297.605C791.77 298.535 792.641 299.221 793.669 299.515Z" fill="#0D0C22"/>
+                            <path d="M430.019 1186.18C428.864 1186.68 427.852 1187.46 427.076 1188.45L427.988 1187.87C428.608 1187.3 429.485 1186.63 430.019 1186.18Z" fill="#0D0C22"/>
+                            <path d="M641.187 1144.63C641.187 1143.33 640.551 1143.57 640.705 1148.21C640.705 1147.84 641.187 1147.57 641.187 1144.63Z" fill="#0D0C22"/>
+                            <path d="M619.284 1186.18C618.129 1186.68 617.118 1187.46 616.342 1188.45L617.254 1187.87C617.873 1187.3 618.751 1186.63 619.284 1186.18Z" fill="#0D0C22"/>
+                            <path d="M281.304 1196.06C280.427 1195.3 279.354 1194.8 278.207 1194.61C279.136 1195.06 280.065 1195.51 280.684 1195.85L281.304 1196.06Z" fill="#0D0C22"/>
+                            <path d="M247.841 1164.01C247.704 1162.66 247.288 1161.35 246.619 1160.16C247.093 1161.39 247.489 1162.66 247.806 1163.94L247.841 1164.01Z" fill="#0D0C22"/>
+                            <path d="M472.623 590.836C426.682 610.503 374.546 632.802 306.976 632.802C278.71 632.746 250.58 628.868 223.353 621.274L270.086 1101.08C271.74 1121.13 280.876 1139.83 295.679 1153.46C310.482 1167.09 329.87 1174.65 349.992 1174.65C349.992 1174.65 416.254 1178.09 438.365 1178.09C462.161 1178.09 533.516 1174.65 533.516 1174.65C553.636 1174.65 573.019 1167.08 587.819 1153.45C602.619 1139.82 611.752 1121.13 613.406 1101.08L660.139 621.274C632.912 628.868 604.782 632.746 576.516 632.802C508.946 632.802 456.809 610.503 410.869 590.836C407.206 589.265 403.991 587.019 401.438 584.255C398.885 581.491 397.048 578.282 396.053 574.833C395.079 571.288 394.84 567.571 395.353 563.928C395.866 560.285 397.117 556.797 399.02 553.689C401.778 549.525 405.657 546.168 410.192 543.964C414.727 541.76 419.772 540.779 424.811 541.113C429.85 541.447 434.719 543.085 438.977 545.881C443.235 548.676 446.736 552.532 449.146 557.111C450.622 559.706 452.461 562.059 454.607 564.097C456.845 566.143 459.352 567.86 462.05 569.199C467.426 571.911 473.326 573.329 479.305 573.351C485.283 573.373 491.193 571.998 496.586 569.313C499.284 567.974 501.791 566.257 504.029 564.211C506.175 562.173 508.014 559.82 509.49 557.225C511.899 552.646 515.401 548.79 519.659 545.995C523.917 543.199 528.786 541.561 533.825 541.227C538.864 540.893 543.909 541.874 548.444 544.078C552.979 546.282 556.858 549.639 559.616 553.803C561.519 556.911 562.77 560.399 563.283 564.042C563.796 567.685 563.557 571.402 562.583 574.947C561.588 578.396 559.751 581.605 557.198 584.369C554.645 587.133 551.43 589.379 547.767 590.95L547.767 590.836Z" fill="#0D0C22"/>
+                            <path d="M472.623 590.836C426.682 610.503 374.546 632.802 306.976 632.802C278.71 632.746 250.58 628.868 223.353 621.274L270.086 1101.08C271.74 1121.13 280.876 1139.83 295.679 1153.46C310.482 1167.09 329.87 1174.65 349.992 1174.65C349.992 1174.65 416.254 1178.09 438.365 1178.09C462.161 1178.09 533.516 1174.65 533.516 1174.65C553.636 1174.65 573.019 1167.08 587.819 1153.45C602.619 1139.82 611.752 1121.13 613.406 1101.08L660.139 621.274C632.912 628.868 604.782 632.746 576.516 632.802C508.946 632.802 456.809 610.503 410.869 590.836C407.206 589.265 403.991 587.019 401.438 584.255C398.885 581.491 397.048 578.282 396.053 574.833C395.079 571.288 394.84 567.571 395.353 563.928C395.866 560.285 397.117 556.797 399.02 553.689C401.778 549.525 405.657 546.168 410.192 543.964C414.727 541.76 419.772 540.779 424.811 541.113C429.85 541.447 434.719 543.085 438.977 545.881C443.235 548.676 446.736 552.532 449.146 557.111C450.622 559.706 452.461 562.059 454.607 564.097C456.845 566.143 459.352 567.86 462.05 569.199C467.426 571.911 473.326 573.329 479.305 573.351C485.283 573.373 491.193 571.998 496.586 569.313C499.284 567.974 501.791 566.257 504.029 564.211C506.175 562.173 508.014 559.82 509.49 557.225C511.899 552.646 515.401 548.79 519.659 545.995C523.917 543.199 528.786 541.561 533.825 541.227C538.864 540.893 543.909 541.874 548.444 544.078C552.979 546.282 556.858 549.639 559.616 553.803C561.519 556.911 562.77 560.399 563.283 564.042C563.796 567.685 563.557 571.402 562.583 574.947C561.588 578.396 559.751 581.605 557.198 584.369C554.645 587.133 551.43 589.379 547.767 590.95L547.767 590.836Z" fill="url(#paint0_linear_174_4403)"/>
+                            <path d="M711.696 295.13C711.696 295.13 681.813 331.265 647.455 354.619C613.097 377.973 565.306 396.667 565.306 396.667C565.306 396.667 551.764 387.279 541.442 373.008C531.121 358.737 515.332 323.891 515.332 323.891C515.332 323.891 537.787 300.337 562.402 276.621C587.017 252.905 633.162 220.805 633.162 220.805L711.696 295.13Z" fill="#FFDD00"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_174_4403" x1="441.744" y1="541.227" x2="441.744" y2="1178.09" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#0D0C22" stop-opacity="0"/>
+                                    <stop offset="1" stop-color="#0D0C22" stop-opacity="0.01"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        Support
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -617,8 +675,8 @@
             <div class="container">
                 <section class="hero">
                     <div class="hero-content">
-                        <h1>AI & Geospatial Solutions for Environmental Justice</h1>
-                        <p>Leveraging machine learning, satellite imagery, and climate data to build intelligent systems for sustainability and environmental resilience.</p>
+                        <h1>AI & Data Scientist | Environmental Justice, Climate & Energy</h1>
+                        <p>Building intelligent machine learning systems for environmental justice, climate resilience, and sustainable energy. Specializing in geospatial analysis, satellite imagery, and data-driven solutions for a better planet.</p>
                         <div class="button-group">
                             <a href="#projects" class="btn btn--primary">View Projects</a>
                             <a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">LinkedIn</a>
@@ -636,20 +694,20 @@
                 <div class="about-grid">
                     <div class="about-section">
                         <h3>Background</h3>
-                        <p>I'm an AI and data scientist specializing in geospatial analysis, machine learning, and environmental justice applications. With expertise spanning climate resilience, satellite imagery processing, and full-stack development, I build intelligent systems to address sustainability challenges.</p>
-                        <p>My work focuses on creating accessible, open-source tools that enable communities and organizations to leverage climate data and AI for decision-making.</p>
+                        <p>I'm an AI and Data Scientist with a focus on environmental justice, climate science, and energy systems. My work combines machine learning, geospatial analysis, and satellite imagery processing to build data-driven solutions that address sustainability challenges and promote environmental equity.</p>
+                        <p>I create accessible, open-source tools that enable communities and organizations to leverage climate data and AI for informed decision-making on environmental issues.</p>
                     </div>
                     <div class="about-section">
                         <h3>Core Expertise</h3>
                         <div class="tech-stack">
                             <span class="tag">Python</span>
                             <span class="tag">Machine Learning</span>
+                            <span class="tag">Data Science</span>
                             <span class="tag">Geospatial Analysis</span>
                             <span class="tag">Satellite Imagery</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Data Science</span>
                             <span class="tag">AI/LLM</span>
                             <span class="tag">Climate Data</span>
+                            <span class="tag">Energy Systems</span>
                         </div>
                         <p style="margin-top: var(--space-16);">Tools: TensorFlow, PyTorch, GDAL, Rasterio, Jupyter, Vercel, GitHub, Google AI Studio</p>
                     </div>
@@ -710,6 +768,7 @@
                 <li><a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a href="https://github.com/ryankmetz" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                 <li><a href="https://ryankmetz.com" target="_blank" rel="noopener noreferrer">Website</a></li>
+                <li><a href="https://buymeacoffee.com/kmetzrm" target="_blank" rel="noopener noreferrer">Buy Me a Coffee</a></li>
             </ul>
         </div>
     </footer>
