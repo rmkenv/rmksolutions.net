@@ -191,6 +191,13 @@
             margin-bottom: var(--space-12);
         }
 
+        h4 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-12);
+            color: var(--color-primary);
+        }
+
         p {
             margin-bottom: var(--space-16);
             line-height: var(--line-height-normal);
@@ -534,6 +541,20 @@
             border: 1px solid rgba(0, 255, 65, 0.2);
         }
 
+        /* Coming Soon */
+        .coming-soon {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            text-align: center;
+        }
+
+        .coming-soon h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-12);
+        }
+
         /* Footer */
         footer {
             background: var(--color-surface);
@@ -731,7 +752,7 @@
                     <button class="filter-btn" data-filter="llm">LLM</button>
                     <button class="filter-btn" data-filter="education">Education</button>
                     <button class="filter-btn" data-filter="environmental">Environmental</button>
-                    <button class="filter-btn" data-filter="climate">Climate</button>
+                    <button class="filter-btn" data-filter="energy">Energy</button>
                 </div>
 
                 <div class="projects-grid" id="projectsGrid"></div>
@@ -742,21 +763,28 @@
         <div id="articles" class="page">
             <div class="container">
                 <h2>Articles & Insights</h2>
-                <p>Thoughts on AI, environmental justice, geospatial analysis, and sustainable technology.</p>
+                <p>Technical case studies and analysis on AI, energy infrastructure, and data engineering.</p>
                 
-                <div class="filter-container">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="data-science">Data Science</button>
-                    <button class="filter-btn" data-filter="gis">GIS</button>
-                    <button class="filter-btn" data-filter="ai">AI</button>
-                    <button class="filter-btn" data-filter="ml">ML</button>
-                    <button class="filter-btn" data-filter="llm">LLM</button>
-                    <button class="filter-btn" data-filter="education">Education</button>
-                    <button class="filter-btn" data-filter="environmental">Environmental</button>
-                    <button class="filter-btn" data-filter="climate">Climate</button>
-                </div>
+                <div class="articles-grid">
+                    <!-- AnchorFlow Card -->
+                    <a href="articles/anchorflow.html" class="article-card">
+                        <h3>AnchorFlow: Technical Case Study</h3>
+                        <p class="article-date">December 2025</p>
+                        <p>Unified Telemetry & Intelligence Mesh for US Natural Gas Infrastructure. Deep dive into grounded AI systems for real-time energy infrastructure monitoring and causal analysis.</p>
+                        <div class="article-tags">
+                            <span class="article-tag">ai</span>
+                            <span class="article-tag">data-science</span>
+                            <span class="article-tag">llm</span>
+                            <span class="article-tag">energy</span>
+                        </div>
+                    </a>
 
-                <div class="articles-grid" id="articlesGrid"></div>
+                    <!-- Coming Soon Card -->
+                    <div class="coming-soon">
+                        <h3>Coming Soon in 2026</h3>
+                        <p>More technical case studies, insights on AI infrastructure, and deep dives into environmental data systems.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -790,53 +818,46 @@
                 url: 'https://planchat-ai-278412187073.us-west1.run.app/'
             },
             {
-                title: 'Environmental Justice AI Platform',
-                description: 'Open-source platform integrating US environmental datasets with machine learning for climate risk assessment and community analysis.',
-                tags: ['environmental', 'ai', 'data-science', 'gis', 'climate'],
-                url: '#'
+                title: 'Pipeline Data Analysis Agent',
+                description: 'AI-powered agent for analyzing natural gas pipeline data and infrastructure telemetry. Provides real-time insights into capacity constraints, flow dynamics, and operational patterns across energy networks.',
+                tags: ['ai', 'data-science', 'llm', 'ml'],
+                url: 'https://pipeline-data-analysis-agent-278412187073.us-west1.run.app'
             },
             {
-                title: 'Satellite Nameplate Identification',
-                description: 'Deep learning system for identifying HVAC nameplates from satellite imagery to enable municipal energy management.',
-                tags: ['ai', 'ml', 'gis', 'environmental'],
-                url: '#'
-            },
-            {
-                title: 'Climate Data Analysis Toolkit',
-                description: 'Python toolkit for processing and visualizing climate datasets with integrated geospatial analysis capabilities.',
-                tags: ['data-science', 'gis', 'climate', 'environmental'],
-                url: '#'
-            },
-            {
-                title: 'Energy Manager AI Agent',
-                description: 'Intelligent agent for building automation, energy bill analysis, and optimization recommendations using LLMs.',
+                title: 'Environmental Justice GPT',
+                description: 'Custom GPT for analyzing environmental justice issues, climate impacts, and community-level environmental data. Helps researchers and advocates understand environmental equity challenges.',
                 tags: ['ai', 'llm', 'environmental'],
-                url: '#'
-            }
-        ];
-
-        // Articles Data
-        const articles = [
-            {
-                title: 'Getting Started with Geospatial AI',
-                description: 'A practical guide to leveraging satellite imagery and machine learning for environmental analysis.',
-                date: 'January 15, 2025',
-                tags: ['ai', 'gis', 'data-science', 'education'],
-                url: '#'
+                url: 'https://chatgpt.com/g/g-OHFYRpmWE-ej-gpt'
             },
             {
-                title: 'Climate Justice through Data Science',
-                description: 'How accessible climate data and AI tools can empower communities to understand and respond to environmental challenges.',
-                date: 'January 10, 2025',
-                tags: ['environmental', 'climate', 'ai', 'education'],
-                url: '#'
+                title: 'Data Center Energy Demand Forecasting',
+                description: 'Machine learning models for forecasting data center electricity demand patterns. Uses historical consumption data and operational metrics to predict future energy requirements.',
+                tags: ['ml', 'data-science', 'energy'],
+                url: 'https://github.com/rmkenv/datacenter-demand'
             },
             {
-                title: 'Building LLM Agents for Sustainability',
-                description: 'Exploring how language models can be adapted to solve real-world environmental and energy management problems.',
-                date: 'January 5, 2025',
-                tags: ['llm', 'ai', 'environmental'],
-                url: '#'
+                title: 'Energy Price Forecasting Tool',
+                description: 'Advanced ML tool for predicting electricity market prices using historical data, weather patterns, and grid demand signals. Supports day-ahead and intraday price forecasting.',
+                tags: ['ml', 'data-science', 'energy'],
+                url: 'https://github.com/rmkenv/Energy-Price-Forecasting-Tool'
+            },
+            {
+                title: 'Battery & Urban Heat Island Analysis',
+                description: 'Geospatial analysis tool examining the relationship between battery energy storage systems and urban heat island effects. Combines thermal data with infrastructure mapping.',
+                tags: ['gis', 'data-science', 'environmental'],
+                url: 'https://github.com/rmkenv/battery_UHI'
+            },
+            {
+                title: 'Culvert Infrastructure Analysis',
+                description: 'GIS-enabled automated culvert design and analysis tool. Processes elevation data, watershed characteristics, and flow patterns to optimize stormwater infrastructure.',
+                tags: ['gis', 'data-science', 'environmental'],
+                url: 'https://github.com/rmkenv/culverts'
+            },
+            {
+                title: 'HDD/CDD Calculator',
+                description: 'Heating Degree Days and Cooling Degree Days calculator for building energy analysis. Processes weather data to quantify heating and cooling demands across different climate zones.',
+                tags: ['data-science', 'energy'],
+                url: 'https://github.com/rmkenv/hdd_cdd_calculator'
             }
         ];
 
@@ -887,36 +908,6 @@
             });
         }
 
-        // Render Articles
-        function renderArticles(filter = 'all') {
-            const articlesGrid = document.getElementById('articlesGrid');
-            articlesGrid.innerHTML = '';
-            
-            const filtered = filter === 'all' ? articles : articles.filter(a => a.tags.includes(filter));
-
-            if (filtered.length === 0) {
-                articlesGrid.innerHTML = '<div class="article-card"><h3>No articles found</h3><p>Try a different filter.</p></div>';
-                return;
-            }
-
-            filtered.forEach(article => {
-                const card = document.createElement('a');
-                card.href = article.url;
-                card.className = 'article-card';
-                card.target = article.url.startsWith('http') ? '_blank' : '_self';
-                card.rel = article.url.startsWith('http') ? 'noopener noreferrer' : '';
-                card.innerHTML = `
-                    <h3>${article.title}</h3>
-                    <p class="article-date">${article.date}</p>
-                    <p>${article.description}</p>
-                    <div class="article-tags">
-                        ${article.tags.map(tag => `<span class="article-tag">${tag}</span>`).join('')}
-                    </div>
-                `;
-                articlesGrid.appendChild(card);
-            });
-        }
-
         // Initialize Navigation
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -941,18 +932,9 @@
             });
         });
 
-        document.querySelectorAll('#articles .filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#articles .filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderArticles(btn.getAttribute('data-filter'));
-            });
-        });
-
         // Initial render and page load
         window.addEventListener('load', () => {
             renderProjects();
-            renderArticles();
             
             // Handle URL hash on load
             const hash = window.location.hash.slice(1) || 'home';
