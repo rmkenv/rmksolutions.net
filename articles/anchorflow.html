@@ -373,18 +373,6 @@
             background: var(--color-border);
         }
 
-        .btn--orange {
-            background: #FF6B35;
-            color: #FFFFFF;
-            font-weight: var(--font-weight-semibold);
-        }
-
-        .btn--orange:hover {
-            background: #FF8555;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-        }
-
         /* About Page */
         .about-grid {
             display: grid;
@@ -553,13 +541,84 @@
             border: 1px solid rgba(0, 255, 65, 0.2);
         }
 
-        /* Coming Soon */
-        .coming-soon {
+        /* Article Detail Page */
+        .article-detail {
+            max-width: 800px;
+        }
+
+        .article-detail .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-8);
+            margin-bottom: var(--space-24);
+            color: var(--color-primary);
+            cursor: pointer;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .article-detail .back-btn:hover {
+            color: var(--color-primary-hover);
+        }
+
+        .article-detail h1 {
+            font-size: 2.2em;
+            margin-bottom: var(--space-12);
+            line-height: 1.3;
+        }
+
+        .article-detail .subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-24);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .article-detail .section {
+            margin-bottom: var(--space-32);
+        }
+
+        .article-detail .section h3 {
+            color: var(--color-primary);
+            margin-top: var(--space-24);
+        }
+
+        .article-detail .tech-specs {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
-            padding: var(--space-32);
+            padding: var(--space-24);
+            margin-top: var(--space-32);
+        }
+
+        .article-detail .tech-specs h3 {
+            margin-top: 0;
+        }
+
+        .article-detail .tech-specs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .article-detail .tech-specs li {
+            padding: var(--space-8) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .article-detail .tech-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .article-detail .tech-specs strong {
+            color: var(--color-primary);
+        }
+
+        /* Coming Soon */
+        .coming-soon {
             text-align: center;
+            padding: var(--space-32);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
         }
 
         .coming-soon h3 {
@@ -624,6 +683,10 @@
 
             .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .article-detail h1 {
+                font-size: 1.6em;
             }
         }
 
@@ -712,7 +775,6 @@
                         <h1>AI & Data Scientist | Environmental Justice, Climate & Energy</h1>
                         <p>Building intelligent machine learning systems for environmental justice, climate resilience, and sustainable energy. Specializing in geospatial analysis, satellite imagery, and data-driven solutions for a better planet.</p>
                         <div class="button-group">
-                            <a href="https://anchorflow-278412187073.us-west1.run.app" target="_blank" rel="noopener noreferrer" class="btn btn--orange">Try AnchorFlow →</a>
                             <button onclick="changePage('projects')" class="btn btn--primary">View Projects</button>
                             <a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">LinkedIn</a>
                             <a href="https://ryankmetz.com" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Website</a>
@@ -759,13 +821,10 @@
                 <div class="filter-container">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="data-science">Data Science</button>
-                    <button class="filter-btn" data-filter="gis">GIS</button>
                     <button class="filter-btn" data-filter="ai">AI</button>
                     <button class="filter-btn" data-filter="ml">ML</button>
                     <button class="filter-btn" data-filter="llm">LLM</button>
                     <button class="filter-btn" data-filter="education">Education</button>
-                    <button class="filter-btn" data-filter="environmental">Environmental</button>
-                    <button class="filter-btn" data-filter="energy">Energy</button>
                 </div>
 
                 <div class="projects-grid" id="projectsGrid"></div>
@@ -778,24 +837,204 @@
                 <h2>Articles & Insights</h2>
                 <p>Technical case studies and analysis on AI, energy infrastructure, and data engineering.</p>
                 
-                <div class="articles-grid">
-                    <!-- AnchorFlow Card - Opens in new tab -->
-                    <a href="articles/anchorflow.html" target="_blank" rel="noopener noreferrer" class="article-card">
-                        <h3>AnchorFlow: Technical Case Study</h3>
-                        <p class="article-date">December 2025</p>
-                        <p>Unified Telemetry & Intelligence Mesh for US Natural Gas Infrastructure. Deep dive into grounded AI systems for real-time energy infrastructure monitoring and causal analysis.</p>
-                        <div class="article-tags">
-                            <span class="article-tag">ai</span>
-                            <span class="article-tag">data-science</span>
-                            <span class="article-tag">llm</span>
-                            <span class="article-tag">energy</span>
-                        </div>
-                    </a>
+                <div class="articles-grid" id="articlesGrid"></div>
+            </div>
+        </div>
 
-                    <!-- Coming Soon Card -->
-                    <div class="coming-soon">
-                        <h3>Coming Soon in 2026</h3>
-                        <p>More technical case studies, insights on AI infrastructure, and deep dives into environmental data systems.</p>
+        <!-- AnchorFlow Article Detail Page -->
+        <div id="article-anchorflow" class="page">
+            <div class="container">
+                <div class="article-detail">
+                    <div class="back-btn" onclick="changePage('articles')">
+                        ← Back to Articles
+                    </div>
+                    
+                    <h1>AnchorFlow: Technical Case Study</h1>
+                    <p class="subtitle">Unified Telemetry & Intelligence Mesh for US Natural Gas Infrastructure</p>
+                    
+                    <div class="section">
+                        <h3>1. The Problem: The High Cost of Data Fragmentation</h3>
+                        <p>The United States natural gas system is a $100 billion industrial backbone that increasingly behaves like a real-time network—but is monitored as if it were a filing cabinet [web:84][web:86]. Market participants are forced to stitch together insights from disconnected systems: Electronic Bulletin Boards (EBBs) for pipeline operations, maritime AIS streams for LNG cargoes, and financial feeds for spot and futures prices. The result is a grid that moves at the speed of physics, managed with tools that move at the speed of paperwork.</p>
+                        
+                        <p>When a compressor station in the Permian Basin trips offline, the first signal is often a terse notice buried deep in an EBB, formatted for compliance rather than comprehension. Minutes later, physical flows re-route, pressures drop, and the Waha Hub can see its basis spread blow out as local gas is stranded behind a bottleneck. Yet the causal chain—what failed, where it failed, and how that failure propagated downstream—is typically reconstructed hours after the price has already moved. The grid is effectively running a latency penalty between physical reality and human understanding.</p>
+                        
+                        <p>This is the core pathology of data fragmentation. Each system—pipelines, LNG terminals, tankers, trading desks—holds a partial, time-shifted view of reality [web:87][web:91]. Analysts build ad hoc spreadsheets and custom dashboards, but these are static snapshots of a dynamic infrastructure. The structural asymmetry is simple: volatility in natural gas markets is now measured in seconds and minutes; infrastructure auditing is still measured in hours and days. The cost shows up in widened bid-ask spreads, mispriced basis risk, and delayed operational responses when it matters most.</p>
+                        
+                        <p>AnchorFlow was designed to collapse this gap. It treats the entire network—pipes, tankers, hubs, and indices—as a single Infrastructure Mesh, fusing telemetry into a coherent, time-aligned picture. Instead of asking humans to reconcile siloed feeds, AnchorFlow delivers a continuously updated, machine-reasoned view of the grid that makes infrastructure risk and opportunity legible in real time.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>2. The Engine: Grounded Intelligence & Gemini 3 Pro</h3>
+                        <p>AnchorFlow's core design principle is <strong>Grounded Intelligence</strong>: every analytical statement must trace back to an observable signal. Where conventional generative AI systems are optimized for eloquence, AnchorFlow is optimized for Industrial Fidelity. Its reasoning engine, powered by Gemini 3 Pro, operates under a Zero-Hallucination Protocol that converts a general-purpose model into a constrained analytical instrument.</p>
+                        
+                        <h4>The Validation Gate</h4>
+                        <p>Every insight passes through a three-part Validation Gate before it reaches the user:</p>
+                        
+                        <p><strong>Telemetry Check:</strong> The platform compares current pipeline throughput and pressures against historical baselines and 95th-percentile capacity estimates. If the data does not confirm a constraint, the model cannot claim one.</p>
+                        
+                        <p><strong>Contextual Grounding:</strong> The engine scans for real-time maintenance and capacity notices in EBB postings and related operational sources. If an outage or derate is not documented or strongly implied, the system must label its assessment as uncertain or refrain from causal attribution.</p>
+                        
+                        <p><strong>Market Echo:</strong> AnchorFlow cross-references physical constraints against observed price action, including regional hub prices, Henry Hub benchmarks, and basis spread dynamics. An inferred bottleneck that leaves no trace in price or dispatch patterns is treated with heightened skepticism.</p>
+                        
+                        <p>Only when all three tests align—telemetry anomaly, documented context, and market echo—does the platform assert a causal narrative. Otherwise, it delivers qualified diagnostics or explicitly says, in effect, "the data does not support that conclusion yet."</p>
+                        
+                        <h4>The "Anchor" Effect</h4>
+                        <p>Gemini 3 Pro's extended context window becomes a structural advantage in this architecture [web:90][web:92]. With up to a million tokens of context, AnchorFlow can ingest EBB streams from multiple interstate pipelines, feedgas telemetry from LNG terminals, AIS tracks from dozens of LNG carriers, and multi-hub price histories into a single reasoning pass. That enables global pattern recognition across the Infrastructure Mesh.</p>
+                        
+                        <p>For example, a constraint emerging in Transco Zone 5 in the Northeast can be analyzed in the same context as changing feedgas flows into Sabine Pass on the Gulf Coast. Rather than treating them as separate events, AnchorFlow can evaluate whether increased Gulf export demand is tightening flows along the Transco corridor, raising utilization levels that convert into basis pressure hundreds of miles away. This is the Anchor effect: local anomalies interpreted through a global, grounded context.</p>
+                        
+                        <h4>Hardened Security, Industrial Posture</h4>
+                        <p>Because infrastructure intelligence is operationally sensitive, AnchorFlow embeds a hardened security layer:</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>AES-256 encryption for all telemetry streams and query traffic</li>
+                            <li>Strict separation between system prompts, user input, and external content to mitigate prompt injection and cross-tenant data leakage</li>
+                            <li>Policy controls that prevent the model from inventing sources or fabricating operational data, favoring "no answer" over a plausible but ungrounded explanation</li>
+                        </ul>
+                        
+                        <p>The result is an AI layer that behaves less like a chatbot and more like a calibrated instrument—always anchored to what the data can actually support.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>3. Pillar I: Pipeline Telemetry & Capacity Inference</h3>
+                        <p>Traditional pipeline dashboards answer the question "What is flowing right now?" AnchorFlow is built to answer the more consequential question: "What could flow—and what cannot?"</p>
+                        
+                        <h4>95th-Percentile Practical Capacity</h4>
+                        <p>Pipeline nameplate capacity is often proprietary, outdated, or expressed in ranges that are operationally imprecise [web:89]. AnchorFlow sidesteps this by inferring Practical Capacity from observed behavior. It analyzes rolling 30-day throughput and derives the 95th-percentile flow level for each segment. That empirical benchmark becomes the capacity reference used in its risk models.</p>
+                        
+                        <p>This approach adapts as the system changes. If operators debottleneck a segment by adding compression or looping pipe, observed flows will climb and the 95th-percentile threshold rises. Conversely, equipment derates or chronic maintenance will drag the Practical Capacity lower, tightening the room available before a constraint is reached. Users see not just static limits, but capacity as it lives in the real grid.</p>
+                        
+                        <h4>Severity Audit Ranking & Constraint Nodes</h4>
+                        <p>AnchorFlow runs a continuous Severity Audit Ranking across the network. For each pipeline segment and node:</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>It computes current utilization as a fraction of 95th-percentile Practical Capacity</li>
+                            <li>It identifies Constraint Nodes where utilization exceeds 85% of that benchmark, a level empirically associated with congestion risk and heightened basis volatility</li>
+                            <li>It ranks nodes by severity, persistence, and systemic importance (e.g., key interconnects, high-volume corridors, or nodes feeding major demand centers)</li>
+                        </ul>
+                        
+                        <p>These rankings are visualized as a live constraint heatmap, making it immediately obvious where the system is approaching its stress limits.</p>
+                        
+                        <h4>Case Context: Permian Basin 2024</h4>
+                        <p>Consider the Permian Basin in 2024, when associated gas production climbed toward 20.7 Bcf/d and new takeaway projects like the Matterhorn Express Pipeline entered service. In a conventional workflow, analysts would discover saturation after the fact—once spread compression and negative Waha pricing began surfacing in screens and news feeds.</p>
+                        
+                        <p>With AnchorFlow, the story is different:</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>Within weeks of Matterhorn's September 2024 launch, the system would observe throughput converging toward its inferred Practical Capacity</li>
+                            <li>Utilization breaching the 85% threshold would flag Matterhorn as a rising Constraint Node, even before negative pricing reappeared</li>
+                            <li>Traders and risk managers monitoring the Permian corridor would receive early signals that incremental production was again colliding with finite takeaway, setting the conditions for a basis blowout</li>
+                        </ul>
+                        
+                        <p>Instead of reacting to headlines, stakeholders would see the bottleneck forming in the telemetry layer and could reposition ahead of the market.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>4. Pillar II: Maritime–Infrastructure Synergy (AIS)</h3>
+                        <p>As the United States has become a leading LNG exporter, the functional endpoint of the natural gas grid is no longer the last onshore meter. It is the tanker manifold of an LNG carrier several miles offshore. AnchorFlow's second pillar connects offshore logistics to onshore constraints through a maritime mesh.</p>
+                        
+                        <h4>Proximity Logic & Maritime Mesh</h4>
+                        <p>AnchorFlow ingests real-time AIS streams and classifies vessels of interest—LNG carriers, typically AIS vessel types 70–79. The Proximity Logic engine continuously:</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>Detects LNG vessels within a configurable radius (e.g., 20 km) of coastal infrastructure nodes and LNG export terminals</li>
+                            <li>Correlates these positions with terminal nominal capacity, berth availability, and historical loading patterns</li>
+                            <li>Identifies clusters of vessels that may indicate congestion, weather avoidance, or synchronized loading schedules</li>
+                        </ul>
+                        
+                        <p>Each vessel becomes a moving node in the broader mesh, linked to specific terminals and, through those terminals, to upstream pipelines.</p>
+                        
+                        <h4>Predictive Dwell Times & Loading Latency</h4>
+                        <p>By correlating AIS tracks with upstream feedgas levels and pipeline load factors, AnchorFlow can infer how efficiently terminals are converting pipeline gas into LNG cargoes. It learns typical dwell time distributions for different terminals and operational states.</p>
+                        
+                        <p>When conditions deviate—for instance:</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>Three LNG carriers are moored at Corpus Christi</li>
+                            <li>Upstream pipeline segments feeding the terminal are operating at 98% of Practical Capacity</li>
+                            <li>Feedgas flow patterns indicate that the terminal is near its operational ceiling</li>
+                        </ul>
+                        
+                        <p>AnchorFlow flags a Loading Latency Risk. It can project that cargo loading times will extend beyond normal ranges, potentially delaying departures and disrupting onward schedules. This is actionable intelligence for traders managing destination-flexible cargoes, shipowners scheduling fleet deployment, and pipeline operators anticipating backpressure effects if terminal intake falls behind planned levels.</p>
+                        
+                        <p>In effect, the maritime layer becomes a real-time barometer of coastal throughput stress, tightly coupled to the onshore telemetry fabric.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>5. Pillar III: Market Volatility & Causal Analysis</h3>
+                        <p>AnchorFlow treats price as a diagnostic signal, not the primary object of analysis. The central thesis: price moves are the symptom; physical constraints are the disease.</p>
+                        
+                        <h4>Dual-Layer Volatility: SMA-7 and SMA-20</h4>
+                        <p>To structure this diagnosis, the platform overlays two simple moving averages:</p>
+                        
+                        <p><strong>SMA-7 (7-day):</strong> Highlights rapid price inflections driven by transient events—short outages, weather anomalies, or brief scheduling failures.</p>
+                        
+                        <p><strong>SMA-20 (20-day):</strong> Filters noise and reveals structural shifts—persistent takeaway deficits, new capacity coming online, or demand regime changes.</p>
+                        
+                        <p>When the SMA-7 crosses above or below the SMA-20, AnchorFlow marks a Volatility Event. But instead of leaving that pattern as a purely statistical artifact, the engine immediately interrogates the Infrastructure Mesh.</p>
+                        
+                        <h4>Causal Correlation Engine</h4>
+                        <p>Upon detecting a Volatility Event, the Causal Correlation Engine:</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>Scans pipeline telemetry for new or intensifying Constraint Nodes</li>
+                            <li>Checks EBBs for fresh maintenance postings or force majeure notices</li>
+                            <li>Examines AIS and terminal data for feedgas anomalies or loading disruptions</li>
+                            <li>Considers regional weather signals and seasonal demand profiles when relevant</li>
+                        </ul>
+                        
+                        <p>The system then assembles a causal hypothesis: for instance, "Henry Hub is spiking because import flows from a particular Appalachian interconnect are operating at 100% inferred capacity under cold-weather demand, not simply because of generic 'winter storms.'"</p>
+                        
+                        <p>This fusion—volatility signals tied directly to physical diagnostics—allows users to distinguish between narrative-driven price action and moves grounded in hard constraints. In practice, that is the difference between chasing noise and acting on structural signals.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>6. Strategic Use Cases</h3>
+                        <p>AnchorFlow's architecture unlocks distinct advantages for different classes of stakeholders, all anchored in the same telemetry-driven intelligence mesh.</p>
+                        
+                        <h4>For Energy Traders: From Reactive Hedging to Predictive Positioning</h4>
+                        <p>Traders traditionally discover basis risk when it shows up in P&L. With AnchorFlow, they can see the conditions for a basis blowout forming before it hits the tape.</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>Constraint Nodes exceeding 85% utilization in a production basin signal tightening takeaway</li>
+                            <li>Maritime congestion at key terminals hints at temporary dampening or amplification of coastal demand</li>
+                            <li>Volatility Events accompanied by clear causal pathways support conviction in directional trades or structured hedges</li>
+                        </ul>
+                        
+                        <p>Instead of merely reacting with defensive hedges, traders can build proactive positions that anticipate how the physical grid will re-price spreads over days and weeks.</p>
+                        
+                        <h4>For Grid Operators: Early Warning on Fuel Switching</h4>
+                        <p>Grid operators balancing generation portfolios need an early view into gas deliverability. AnchorFlow's load persistence metrics—how long a segment has remained in a high-utilization regime—provide a leading indicator of stress.</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>In a winter surge, persistent high load factors on key corridors can precede capacity allocations and pressure drops</li>
+                            <li>When pipeline telemetry and market signals indicate sustained strain, operators can preemptively plan fuel switching—ramping coal, nuclear, hydro, or storage—before gas supply reliability degrades</li>
+                        </ul>
+                        
+                        <p>The result is a smoother response curve, fewer emergency calls, and a more resilient grid under peak conditions.</p>
+                        
+                        <h4>For Infrastructure Investors: Quantifying Real-World Impact</h4>
+                        <p>For investors evaluating midstream projects, the key question is not just "How big is the pipe?" but "What did it actually fix?"</p>
+                        
+                        <p>AnchorFlow provides a before-and-after lens:</p>
+                        <ul style="list-style: disc; margin-left: var(--space-24); margin-bottom: var(--space-16);">
+                            <li>Prior to an expansion, it characterizes the frequency, location, and severity of Constraint Nodes in a corridor</li>
+                            <li>Post-commissioning, it tracks whether constraints have disappeared, shifted, or multiplied downstream</li>
+                            <li>It quantifies reductions in basis volatility and constraint persistence as realized value, not just as theoretical capacity</li>
+                        </ul>
+                        
+                        <p>This enables investors and developers to validate that a project delivered genuine system relief rather than simply moving congestion 50 miles down the line.</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>7. Conclusion: The Era of the Intelligence Mesh</h3>
+                        <p>The next decade of energy infrastructure will not be defined solely by more steel in the ground. It will be defined by how intelligently that steel is monitored, interpreted, and orchestrated [web:88]. AnchorFlow embodies this shift—a move from disjointed monitoring tools to a unified, Grounded Intelligence layer that treats the entire US natural gas system as a living telemetry fabric.</p>
+                        
+                        <p>By enforcing a Zero-Hallucination Protocol, binding every claim to verifiable signals, and continuously reconciling pipelines, tankers, and markets in a single reasoning context, AnchorFlow transforms the grid from an opaque collection of assets into a transparent, queryable Intelligence Mesh. The payoff is tangible: earlier warning of constraints, clearer attribution of volatility, more precise investment decisions, and a marked reduction in the informational asymmetry that has long defined the sector.</p>
+                        
+                        <p>In an industry where seconds of latency can mean millions in mispriced risk, AnchorFlow's mission is straightforward: ensure that insight arrives as fast as the molecules move.</p>
+                    </div>
+
+                    <div class="tech-specs">
+                        <h3>Technical Specifications (Conceptual Profile)</h3>
+                        <ul>
+                            <li><strong>Core Engine:</strong> Google Gemini 3 Pro-based analytical instrument</li>
+                            <li><strong>Security:</strong> AES-256 encryption with hardened prompt and context isolation</li>
+                            <li><strong>Data Latency Target:</strong> ~15-second refresh cycle for key telemetry streams</li>
+                            <li><strong>Capacity Inference Model:</strong> Rolling 30-day, 95th-percentile Practical Capacity calculation across pipeline segments</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -835,42 +1074,26 @@
                 description: 'AI-powered agent for analyzing natural gas pipeline data and infrastructure telemetry. Provides real-time insights into capacity constraints, flow dynamics, and operational patterns across energy networks.',
                 tags: ['ai', 'data-science', 'llm', 'ml'],
                 url: 'https://pipeline-data-analysis-agent-278412187073.us-west1.run.app'
+            }
+        ];
+
+        // Articles Data
+        const articles = [
+            {
+                title: 'AnchorFlow: Technical Case Study',
+                description: 'Unified Telemetry & Intelligence Mesh for US Natural Gas Infrastructure. Deep dive into grounded AI systems for real-time energy infrastructure monitoring.',
+                date: 'December 2025',
+                tags: ['ai', 'data-science', 'llm'],
+                url: 'article-anchorflow',
+                isInternal: true
             },
             {
-                title: 'Environmental Justice GPT',
-                description: 'Custom GPT for analyzing environmental justice issues, climate impacts, and community-level environmental data. Helps researchers and advocates understand environmental equity challenges.',
-                tags: ['ai', 'llm', 'environmental'],
-                url: 'https://chatgpt.com/g/g-OHFYRpmWE-ej-gpt'
-            },
-            {
-                title: 'Data Center Energy Demand Forecasting',
-                description: 'Machine learning models for forecasting data center electricity demand patterns. Uses historical consumption data and operational metrics to predict future energy requirements.',
-                tags: ['ml', 'data-science', 'energy'],
-                url: 'https://github.com/rmkenv/datacenter-demand'
-            },
-            {
-                title: 'Energy Price Forecasting Tool',
-                description: 'Advanced ML tool for predicting electricity market prices using historical data, weather patterns, and grid demand signals. Supports day-ahead and intraday price forecasting.',
-                tags: ['ml', 'data-science', 'energy'],
-                url: 'https://github.com/rmkenv/Energy-Price-Forecasting-Tool'
-            },
-            {
-                title: 'Battery & Urban Heat Island Analysis',
-                description: 'Geospatial analysis tool examining the relationship between battery energy storage systems and urban heat island effects. Combines thermal data with infrastructure mapping.',
-                tags: ['gis', 'data-science', 'environmental'],
-                url: 'https://github.com/rmkenv/battery_UHI'
-            },
-            {
-                title: 'Culvert Infrastructure Analysis',
-                description: 'GIS-enabled automated culvert design and analysis tool. Processes elevation data, watershed characteristics, and flow patterns to optimize stormwater infrastructure.',
-                tags: ['gis', 'data-science', 'environmental'],
-                url: 'https://github.com/rmkenv/culverts'
-            },
-            {
-                title: 'HDD/CDD Calculator',
-                description: 'Heating Degree Days and Cooling Degree Days calculator for building energy analysis. Processes weather data to quantify heating and cooling demands across different climate zones.',
-                tags: ['data-science', 'energy'],
-                url: 'https://github.com/rmkenv/hdd_cdd_calculator'
+                title: 'More Articles Coming Soon',
+                description: 'Additional technical case studies and insights on AI, environmental justice, and data engineering will be published throughout 2026.',
+                date: '2026',
+                tags: [],
+                url: '#',
+                isComingSoon: true
             }
         ];
 
@@ -921,6 +1144,44 @@
             });
         }
 
+        // Render Articles
+        function renderArticles() {
+            const articlesGrid = document.getElementById('articlesGrid');
+            articlesGrid.innerHTML = '';
+
+            articles.forEach(article => {
+                if (article.isComingSoon) {
+                    const comingSoon = document.createElement('div');
+                    comingSoon.className = 'coming-soon';
+                    comingSoon.innerHTML = `
+                        <h3>Coming Soon in 2026</h3>
+                        <p>More technical case studies, insights on AI infrastructure, and deep dives into environmental data systems will be published throughout the year.</p>
+                    `;
+                    articlesGrid.appendChild(comingSoon);
+                } else {
+                    const card = document.createElement('div');
+                    card.className = 'article-card';
+                    card.style.cursor = 'pointer';
+                    card.onclick = () => {
+                        if (article.isInternal) {
+                            changePage(article.url);
+                        } else {
+                            window.open(article.url, '_blank');
+                        }
+                    };
+                    card.innerHTML = `
+                        <h3>${article.title}</h3>
+                        <p class="article-date">${article.date}</p>
+                        <p>${article.description}</p>
+                        <div class="article-tags">
+                            ${article.tags.map(tag => `<span class="article-tag">${tag}</span>`).join('')}
+                        </div>
+                    `;
+                    articlesGrid.appendChild(card);
+                }
+            });
+        }
+
         // Initialize Navigation
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -948,6 +1209,7 @@
         // Initial render and page load
         window.addEventListener('load', () => {
             renderProjects();
+            renderArticles();
             
             // Handle URL hash on load
             const hash = window.location.hash.slice(1) || 'home';
