@@ -33,3 +33,27 @@ Traditional language learning apps often lack personalized, conversational pract
 - Safe, educational content generation
 
 ## Architecture
+User Interface
+↓
+FastAPI Backend
+↓
+LLM API (OpenAI/Anthropic)
+↓
+Response Processing & Validation
+↓
+User Feedback & State Update
+
+
+## Deployment
+
+Deployed as a containerized application on GCP Cloud Run for:
+- Auto-scaling based on demand
+- Cost-effective serverless architecture
+- Global availability and low latency
+
+## Future Enhancements
+
+- Voice input/output for pronunciation practice
+- Spaced repetition system for vocabulary retention
+- Multi-modal learning with images and videos
+- Integration with language proficiency assessments
