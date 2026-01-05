@@ -1,54 +1,27 @@
 # QuantAgri – Agriculture Analytics & Insight Hub
 
-**Live App:** https://quantagri-278412187073.us-west1.run.app
+**Live App:** https://quantagri-278412187073.us-west1.run.app  
+
+---
 
 ## Overview
 
-QuantAgri is a decision-support platform for agricultural stakeholders, providing data-driven insights into crop yields, pricing trends, and operational risks. The tool combines exploratory analytics with predictive modeling to support both tactical and strategic decisions.
+QuantAgri is an agriculture intelligence hub that turns raw production and market data into decision-grade insights for growers, cooperatives, and agri-finance teams. It blends exploratory analytics with forecasting to surface trends in crop yields, pricing, weather risk, and market conditions, supporting both day-to-day operations and long-range planning.
 
 ## Problem
 
-Agricultural businesses face uncertainty from weather, market volatility, and supply chain disruptions. Many rely on intuition or outdated spreadsheets rather than data-driven forecasting. QuantAgri bridges this gap with accessible analytics and forecasting tools.
+Agricultural businesses operate under constant uncertainty from weather, market volatility, and supply chain disruptions. Many still lean on intuition, static spreadsheets, or lagging reports that make it hard to see risk early or quantify upside. QuantAgri bridges this gap by delivering accessible, always-on analytics and forecasting tools tailored to how operators actually make decisions.
 
 ## Data
 
-- **Sources:** (Specify: USDA data, weather APIs, commodity prices, etc.)
-- **Granularity:** Daily/weekly/monthly time series
+- **Sources:** Agriculture and market datasets (e.g., yield records, USDA-style statistics, weather APIs, commodity price feeds)
+- **Granularity:** Daily, weekly, and monthly time series depending on metric
 - **Key Variables:**
-  - Crop yield metrics
-  - Commodity pricing
-  - Weather patterns
-  - Market indicators
+  - Crop yield metrics by geography and crop type  
+  - Commodity pricing and basis
+  - Weather patterns and anomalies
+  - Market and macro indicators relevant to agriculture
 
 ## Approach
 
-### Analytics
-- Exploratory data analysis of historical trends
-- Correlation analysis between weather, pricing, and yields
-- Interactive visualizations for stakeholder exploration
-
-### Predictive Modeling
-- **Time Series Forecasting:** Prophet/SARIMA for price and yield predictions
-- **Feature Engineering:** Lagged variables, rolling statistics, seasonality indicators
-- **Model Evaluation:** Backtesting with MAE/RMSE metrics
-
-## Tech Stack
-
-- **Data Processing:** Python, Pandas, NumPy
-- **Modeling:** scikit-learn, Prophet/statsmodels
-- **Visualization:** Plotly, Streamlit/Dash
-- **Infrastructure:** Docker, GCP Cloud Run
-
-## Key Features
-
-- Interactive dashboards for historical trend analysis
-- Forecasting tools for yield and price predictions
-- Scenario analysis for risk planning
-- Exportable reports for stakeholder communication
-
-## Results
-
-- Provides forward-looking visibility into key agricultural metrics
-- Enables data-driven decision making for planting, harvesting, and pricing strategies
-- Reduces reliance on heuristic-based planning
-
+###
