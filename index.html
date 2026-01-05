@@ -501,11 +501,10 @@
         }
 
         /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-24);
-            margin-top: var(--space-32);
+        .contact-section {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .contact-card {
@@ -513,29 +512,44 @@
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
             padding: var(--space-32);
-            text-align: center;
-            transition: all var(--duration-normal);
-        }
-
-        .contact-card:hover {
-            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.2);
-            transform: translateY(-4px);
-            border-color: var(--color-primary);
+            box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
         }
 
         .contact-icon {
-            font-size: 3rem;
-            margin-bottom: var(--space-16);
+            font-size: 4rem;
+            margin-bottom: var(--space-24);
         }
 
         .contact-card h3 {
             color: var(--color-primary);
-            margin-bottom: var(--space-12);
+            margin-bottom: var(--space-16);
+            font-size: var(--font-size-2xl);
         }
 
-        .contact-card a {
-            display: inline-block;
-            margin-top: var(--space-16);
+        .contact-card p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-24);
+            line-height: 1.6;
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-12);
+            padding: var(--space-16) var(--space-32);
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-lg);
+            transition: all var(--duration-fast);
+            text-decoration: none;
+        }
+
+        .email-link:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 65, 0.4);
         }
 
         /* Footer */
@@ -623,11 +637,11 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="nav-brand" onclick="changePage('home')">Ryan Kmetz</div>
+            <div class="nav-brand" onclick="changePage('projects')">Ryan Kmetz</div>
             <ul class="nav-links">
                 <li><a href="#about" class="nav-link" data-page="about">About</a></li>
                 <li><a href="#projects" class="nav-link active" data-page="projects">Projects</a></li>
-                <li><a href="articles/">Articles</a></li>
+                <li><a href="Articles/">Articles</a></li>
                 <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
                 <li>
                     <a href="https://buymeacoffee.com/kmetzrm" target="_blank" rel="noopener noreferrer" class="coffee-btn">
@@ -798,7 +812,7 @@
             </div>
         </div>
 
-        <!-- About Page (Hidden by default) -->
+        <!-- About Page -->
         <div id="about-page" class="page">
             <div class="container">
                 <h2 class="section-title">About Me</h2>
@@ -825,41 +839,18 @@
         <!-- Contact Page -->
         <div id="contact" class="page">
             <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
-                
-                <div class="contact-grid">
-                    <!-- Email Card -->
+                <section class="contact-section">
+                    <h2 class="section-title">Get In Touch</h2>
+                    
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
-                        <h3>Email</h3>
-                        <p>Drop me a line for collaborations, projects, or consulting opportunities.</p>
-                        <a href="mailto:consultrmk@gmail.com" class="btn btn-primary">consultrmk@gmail.com</a>
+                        <h3>Let's Connect</h3>
+                        <p>Interested in collaborating on AI/ML projects, data science consulting, or have questions about my work? I'd love to hear from you.</p>
+                        <a href="mailto:consultrmk@gmail.com" class="email-link">
+                            consultrmk@gmail.com
+                        </a>
                     </div>
-
-                    <!-- LinkedIn Card -->
-                    <div class="contact-card">
-                        <div class="contact-icon">💼</div>
-                        <h3>LinkedIn</h3>
-                        <p>Connect with me professionally and stay updated on my latest work.</p>
-                        <a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Profile</a>
-                    </div>
-
-                    <!-- GitHub Card -->
-                    <div class="contact-card">
-                        <div class="contact-icon">💻</div>
-                        <h3>GitHub</h3>
-                        <p>Explore my open-source projects and code repositories.</p>
-                        <a href="https://github.com/rmkenv" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Repositories</a>
-                    </div>
-
-                    <!-- Support Card -->
-                    <div class="contact-card">
-                        <div class="contact-icon">☕</div>
-                        <h3>Support My Work</h3>
-                        <p>If you find my projects helpful, consider buying me a coffee!</p>
-                        <a href="https://buymeacoffee.com/kmetzrm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #FFDD00; color: #000;">Buy Me a Coffee</a>
-                    </div>
-                </div>
+                </section>
             </div>
         </div>
     </main>
