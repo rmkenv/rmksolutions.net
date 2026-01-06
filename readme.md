@@ -9,7 +9,7 @@ This repository hosts my personal portfolio site and a curated collection of pro
 
 ## About Me
 
-I'm a data scientist and AI engineer specializing in building production-grade machine learning systems, forecasting models, and LLM-powered applications. With over 12 years of experience in environmental and geospatial fields, I focus on translating complex data into actionable insights [attached_file:2][attached_file:4].
+I'm a data scientist and AI engineer specializing in building production-grade machine learning systems, forecasting models, and LLM-powered applications. With over 12 years of experience in environmental and geospatial fields, I focus on translating complex data into actionable insights.
 
 **Core Expertise:**
 - **Applied Machine Learning & Forecasting** – Time series analysis, regression, classification
