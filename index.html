@@ -3,319 +3,841 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles & Projects - Ryan Kmetz</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Ryan Kmetz - Data Science & AI Portfolio</title>
+    <meta name="title" content="Ryan Kmetz - Data Science & AI Portfolio">
+    <meta name="description" content="Ryan Kmetz - Data scientist and AI engineer specializing in production-grade machine learning systems, forecasting models, and LLM-powered applications.">
+    <meta name="keywords" content="AI, machine learning, data science, forecasting, LLM applications, Python, data visualization">
+    <meta name="author" content="Ryan Kmetz">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ryan Kmetz - Data Science & AI Portfolio">
+    <meta property="og:description" content="Production-grade machine learning, forecasting, and LLM applications.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ryan Kmetz - Data Science & AI Portfolio">
+    <meta name="twitter:description" content="Production-grade machine learning, forecasting, and LLM applications.">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ryan Kmetz",
+      "email": "consultrmk@gmail.com",
+      "jobTitle": "Data Scientist and AI Engineer",
+      "sameAs": [
+        "https://www.linkedin.com/in/ryankmetz/",
+        "https://github.com/rmkenv",
+        "https://buymeacoffee.com/kmetzrm"
+      ],
+      "knowsAbout": [
+        "Machine Learning",
+        "Time Series Forecasting",
+        "LLM Applications",
+        "Python Programming",
+        "Data Visualization",
+        "Cloud Deployment"
+      ],
+      "description": "Data scientist and AI engineer specializing in production-grade machine learning systems and LLM applications"
+    }
+    </script>
+    
     <style>
         :root {
-            --color-background: rgba(7, 20, 17, 1);
-            --color-surface: rgba(13, 2, 8, 1);
-            --color-text: rgba(255, 255, 255, 1);
-            --color-text-secondary: rgba(143, 224, 193, 1);
-            --color-primary: rgba(0, 255, 65, 1);
-            --color-primary-hover: rgba(0, 255, 102, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-matrix-dark: rgba(13, 2, 8, 1);
+            --color-matrix-darker: rgba(7, 20, 17, 1);
+            --color-matrix-green: rgba(0, 255, 65, 1);
+            --color-matrix-green-bright: rgba(0, 255, 102, 1);
+            --color-matrix-green-dim: rgba(0, 143, 17, 1);
+            --color-matrix-teal: rgba(0, 209, 160, 1);
+            --color-matrix-mint: rgba(143, 224, 193, 1);
+            --color-gray-200: rgba(40, 40, 40, 1);
+            --color-gray-300: rgba(60, 60, 60, 1);
+            --color-gray-400: rgba(80, 80, 80, 1);
+            --color-white: rgba(255, 255, 255, 1);
+
+            --color-background: var(--color-matrix-darker);
+            --color-surface: var(--color-matrix-dark);
+            --color-text: var(--color-white);
+            --color-text-secondary: var(--color-matrix-mint);
+            --color-primary: var(--color-matrix-green);
+            --color-primary-hover: var(--color-matrix-green-bright);
+            --color-primary-active: var(--color-matrix-green-dim);
             --color-border: rgba(0, 255, 65, 0.15);
+            --color-btn-primary-text: var(--color-matrix-darker);
+
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-normal: 1.5;
+            --line-height-tight: 1.2;
+
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--color-background);
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: var(--color-matrix-darker);
+                --color-surface: var(--color-matrix-dark);
+                --color-text: var(--color-white);
+                --color-text-secondary: var(--color-matrix-mint);
+                --color-primary: var(--color-matrix-green);
+                --color-primary-hover: var(--color-matrix-green-bright);
+                --color-primary-active: var(--color-matrix-green-dim);
+                --color-border: rgba(0, 255, 65, 0.15);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            line-height: var(--line-height-normal);
             color: var(--color-text);
-            line-height: 1.6;
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Typography */
         h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+            margin-bottom: var(--space-16);
+        }
+
+        h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            line-height: var(--line-height-tight);
+            margin-bottom: var(--space-16);
+        }
+
+        h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-12);
+        }
+
+        h4 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-12);
             color: var(--color-primary);
-            margin-bottom: 16px;
-            font-size: 2.5em;
-            text-align: center;
         }
-        .subtitle {
-            text-align: center;
-            color: var(--color-text-secondary);
-            margin-bottom: 40px;
-            font-size: 1.1em;
+
+        p {
+            margin-bottom: var(--space-16);
+            line-height: var(--line-height-normal);
         }
-        .back-link {
-            display: inline-block;
+
+        a {
             color: var(--color-primary);
             text-decoration: none;
-            margin-bottom: 30px;
-            font-weight: 500;
-            transition: all 0.3s;
+            transition: color var(--duration-fast);
         }
-        .back-link:hover { 
-            text-decoration: underline;
-            transform: translateX(-4px);
+
+        a:hover {
+            color: var(--color-primary-hover);
         }
-        
-        .section {
-            margin-bottom: 50px;
+
+        /* Navigation */
+        nav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(13, 2, 8, 0.9);
         }
-        
-        .section-title {
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-16) var(--space-20);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
             color: var(--color-primary);
-            font-size: 1.8em;
-            margin-bottom: 24px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--color-border);
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
         }
-        
-        .grid {
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-20);
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: var(--font-weight-medium);
+            transition: all var(--duration-fast);
+            padding: var(--space-8) var(--space-12);
+            border-radius: var(--radius-sm);
+        }
+
+        .nav-links a:hover {
+            background: var(--color-border);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.active {
+            color: var(--color-primary);
+            font-weight: var(--font-weight-bold);
+        }
+
+        /* Coffee Button */
+        .coffee-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-8);
+            padding: var(--space-8) var(--space-16);
+            background: #FFDD00;
+            color: #000000;
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-semibold);
+            transition: all var(--duration-fast);
+            font-size: var(--font-size-base);
+            border: none;
+            cursor: pointer;
+        }
+
+        .coffee-btn:hover {
+            background: #FFED4E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 221, 0, 0.4);
+        }
+
+        .coffee-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-32) var(--space-20);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn var(--duration-normal);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: var(--space-32);
+            padding: var(--space-32) 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: var(--space-20);
+            line-height: var(--line-height-tight);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-matrix-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-24);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: var(--space-32);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            margin-bottom: var(--space-32);
+            box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .about-section h2 {
+            text-align: center;
+            margin-bottom: var(--space-24);
+        }
+
+        .about-section h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-16);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-12);
+            margin-top: var(--space-20);
+            justify-content: center;
+        }
+
+        .skill-item {
+            background: rgba(0, 255, 65, 0.12);
+            color: var(--color-matrix-green);
+            padding: var(--space-12) var(--space-20);
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: var(--font-weight-semibold);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+            transition: all var(--duration-fast);
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 255, 65, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-32);
+            text-align: center;
+            color: var(--color-primary);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-24);
+            margin-bottom: var(--space-32);
         }
-        
-        .card {
+
+        .project-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s;
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            transition: all var(--duration-normal);
+            display: block;
+            text-decoration: none;
+            color: inherit;
             position: relative;
             overflow: hidden;
         }
-        
-        .card::before {
+
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--color-primary), rgba(0, 209, 160, 1));
+            background: linear-gradient(90deg, var(--color-primary), var(--color-matrix-teal));
             transform: scaleX(0);
-            transition: transform 0.3s;
+            transition: transform var(--duration-normal);
         }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.2);
-            border-color: var(--color-primary);
-        }
-        
-        .card:hover::before {
+
+        .project-card:hover::before {
             transform: scaleX(1);
         }
-        
-        .card-icon {
-            font-size: 2.5em;
-            margin-bottom: 12px;
+
+        .project-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.25);
+            transform: translateY(-6px);
+            border-color: var(--color-primary);
         }
-        
-        .card h3 {
+
+        .project-card h3 {
             color: var(--color-primary);
-            font-size: 1.3em;
-            margin-bottom: 8px;
+            margin-bottom: var(--space-8);
+            font-size: var(--font-size-xl);
         }
-        
-        .card-type {
+
+        .project-type {
             color: var(--color-text-secondary);
-            font-size: 0.9em;
+            font-size: 13px;
+            margin-bottom: var(--space-16);
             font-style: italic;
-            margin-bottom: 12px;
             opacity: 0.9;
         }
-        
-        .card p {
+
+        .project-card p {
+            margin-bottom: var(--space-16);
             color: var(--color-text-secondary);
-            margin-bottom: 16px;
             line-height: 1.6;
         }
-        
-        .card-links {
+
+        .tech-tags {
             display: flex;
-            gap: 12px;
             flex-wrap: wrap;
+            gap: var(--space-8);
+            margin-bottom: var(--space-20);
         }
-        
+
+        .tech-tag {
+            background: rgba(0, 255, 65, 0.08);
+            color: var(--color-matrix-green);
+            padding: var(--space-4) var(--space-12);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: var(--font-weight-medium);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .project-links {
+            display: flex;
+            gap: var(--space-12);
+            margin-top: var(--space-20);
+        }
+
         .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-20);
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: all var(--duration-fast);
+            border: none;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9em;
-            transition: all 0.3s;
+            font-size: var(--font-size-base);
         }
-        
+
         .btn-primary {
             background: var(--color-primary);
-            color: var(--color-background);
+            color: var(--color-btn-primary-text);
         }
-        
+
         .btn-primary:hover {
             background: var(--color-primary-hover);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 255, 65, 0.3);
         }
-        
+
         .btn-secondary {
             background: transparent;
             border: 1px solid var(--color-border);
             color: var(--color-text);
         }
-        
+
         .btn-secondary:hover {
             background: var(--color-border);
             border-color: var(--color-primary);
         }
-        
-        .article-list {
-            list-style: none;
+
+        /* Contact Section */
+        .contact-section {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
-        
-        .article-item {
+
+        .contact-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 16px;
-            transition: all 0.3s;
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
         }
-        
-        .article-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.2);
-            border-color: var(--color-primary);
-        }
-        
-        .article-item a {
+
+        .contact-card h3 {
             color: var(--color-primary);
-            text-decoration: none;
-            font-size: 1.3em;
-            font-weight: 600;
+            margin-bottom: var(--space-16);
+            font-size: var(--font-size-2xl);
         }
-        
-        .article-item a:hover { text-decoration: underline; }
-        
-        .article-item .date {
+
+        .contact-card p {
             color: var(--color-text-secondary);
-            font-size: 0.9em;
-            margin-top: 4px;
-            opacity: 0.8;
-        }
-        
-        .article-item p {
-            color: var(--color-text-secondary);
-            margin-top: 12px;
+            margin-bottom: var(--space-24);
             line-height: 1.6;
         }
-        
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-12);
+            padding: var(--space-16) var(--space-32);
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-lg);
+            transition: all var(--duration-fast);
+            text-decoration: none;
+        }
+
+        .email-link:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 65, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-32) var(--space-20);
+            margin-top: var(--space-32);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-16);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-20);
+            list-style: none;
+        }
+
+        .social-links a {
+            font-weight: var(--font-weight-medium);
+            transition: all var(--duration-fast);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
+            .nav-container {
+                flex-direction: column;
+                gap: var(--space-12);
             }
-            h1 {
+
+            .nav-links {
+                gap: var(--space-12);
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
                 font-size: 2em;
             }
-            .section-title {
-                font-size: 1.5em;
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section {
+                padding: var(--space-24);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a {
+                padding: var(--space-8);
+                font-size: 13px;
+            }
+
+            .coffee-btn {
+                padding: var(--space-6) var(--space-12);
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 1.8em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="../" class="back-link">← Back to Portfolio</a>
-        
-        <h1>Projects & Articles</h1>
-        <p class="subtitle">Production AI applications and technical deep dives</p>
-        
-        <!-- Featured AI Applications -->
-        <section class="section">
-            <h2 class="section-title">🚀 Featured AI Applications</h2>
-            <div class="grid">
-                <!-- Skillzy -->
-                <div class="card">
-                    <div class="card-icon">🎓</div>
-                    <h3>Skillzy – Master the AI Language</h3>
-                    <p class="card-type">Generative AI Language Tutor</p>
-                    <p>AI-powered language learning assistant with real-time feedback and adaptive tutoring through conversational practice.</p>
-                    <div class="card-links">
-                        <a href="https://skillzy-master-the-ai-language-422293089314.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
-                        <a href="../projects/skillzy-ai-language-tutor/" class="btn btn-secondary">Details</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand" onclick="changePage('projects')">Ryan Kmetz</div>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#projects" class="nav-link active" data-page="projects">Projects</a></li>
+                <li><a href="Articles/">Articles</a></li>
+                <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                <li>
+                    <a href="https://buymeacoffee.com/kmetzrm" target="_blank" rel="noopener noreferrer" class="coffee-btn">
+                        <svg class="coffee-icon" viewBox="0 0 884 1279" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M791.109 297.518L790.231 297.002L788.201 296.383C789.018 297.072 790.04 297.472 791.109 297.518Z" fill="#0D0C22"/>
+                            <path d="M803.896 388.891L803.784 388.726L803.738 388.37L803.896 388.891Z" fill="#0D0C22"/>
+                            <path d="M791.484 297.377C791.359 297.361 791.237 297.332 791.118 297.29C791.111 297.371 791.111 297.453 791.118 297.534C791.252 297.516 791.368 297.462 791.484 297.377Z" fill="#0D0C22"/>
+                            <path d="M791.113 297.529H791.244V297.447L791.113 297.529Z" fill="#0D0C22"/>
+                            <path d="M803.111 388.726L804.591 390.607L804.004 388.207L803.111 388.726Z" fill="#0D0C22"/>
+                            <path d="M793.669 299.515L792.223 298.138L791.243 297.605C791.77 298.535 792.641 299.221 793.669 299.515Z" fill="#0D0C22"/>
+                            <path d="M430.019 1186.18C428.864 1186.68 427.852 1187.46 427.076 1188.45L427.988 1187.87C428.608 1187.3 429.485 1186.63 430.019 1186.18Z" fill="#0D0C22"/>
+                            <path d="M641.187 1144.63C641.187 1143.33 640.551 1143.57 640.705 1148.21C640.705 1147.84 641.187 1147.57 641.187 1144.63Z" fill="#0D0C22"/>
+                            <path d="M619.284 1186.18C618.129 1186.68 617.118 1187.46 616.342 1188.45L617.254 1187.87C617.873 1187.3 618.751 1186.63 619.284 1186.18Z" fill="#0D0C22"/>
+                            <path d="M281.304 1196.06C280.427 1195.3 279.354 1194.8 278.207 1194.61C279.136 1195.06 280.065 1195.51 280.684 1195.85L281.304 1196.06Z" fill="#0D0C22"/>
+                            <path d="M247.841 1164.01C247.704 1162.66 247.288 1161.35 246.619 1160.16C247.093 1161.39 247.489 1162.66 247.806 1163.94L247.841 1164.01Z" fill="#0D0C22"/>
+                            <path d="M472.623 590.836C426.682 610.503 374.546 632.802 306.976 632.802C278.71 632.746 250.58 628.868 223.353 621.274L270.086 1101.08C271.74 1121.13 280.876 1139.83 295.679 1153.46C310.482 1167.09 329.87 1174.65 349.992 1174.65C349.992 1174.65 416.254 1178.09 438.365 1178.09C462.161 1178.09 533.516 1174.65 533.516 1174.65C553.636 1174.65 573.019 1167.08 587.819 1153.45C602.619 1139.82 611.752 1121.13 613.406 1101.08L660.139 621.274C632.912 628.868 604.782 632.746 576.516 632.802C508.946 632.802 456.809 610.503 410.869 590.836C407.206 589.265 403.991 587.019 401.438 584.255C398.885 581.491 397.048 578.282 396.053 574.833C395.079 571.288 394.84 567.571 395.353 563.928C395.866 560.285 397.117 556.797 399.02 553.689C401.778 549.525 405.657 546.168 410.192 543.964C414.727 541.76 419.772 540.779 424.811 541.113C429.85 541.447 434.719 543.085 438.977 545.881C443.235 548.676 446.736 552.532 449.146 557.111C450.622 559.706 452.461 562.059 454.607 564.097C456.845 566.143 459.352 567.86 462.05 569.199C467.426 571.911 473.326 573.329 479.305 573.351C485.283 573.373 491.193 571.998 496.586 569.313C499.284 567.974 501.791 566.257 504.029 564.211C506.175 562.173 508.014 559.82 509.49 557.225C511.899 552.646 515.401 548.79 519.659 545.995C523.917 543.199 528.786 541.561 533.825 541.227C538.864 540.893 543.909 541.874 548.444 544.078C552.979 546.282 556.858 549.639 559.616 553.803C561.519 556.911 562.77 560.399 563.283 564.042C563.796 567.685 563.557 571.402 562.583 574.947C561.588 578.396 559.751 581.605 557.198 584.369C554.645 587.133 551.43 589.379 547.767 590.95L547.767 590.836Z" fill="#0D0C22"/>
+                            <path d="M472.623 590.836C426.682 610.503 374.546 632.802 306.976 632.802C278.71 632.746 250.58 628.868 223.353 621.274L270.086 1101.08C271.74 1121.13 280.876 1139.83 295.679 1153.46C310.482 1167.09 329.87 1174.65 349.992 1174.65C349.992 1174.65 416.254 1178.09 438.365 1178.09C462.161 1178.09 533.516 1174.65 533.516 1174.65C553.636 1174.65 573.019 1167.08 587.819 1153.45C602.619 1139.82 611.752 1121.13 613.406 1101.08L660.139 621.274C632.912 628.868 604.782 632.746 576.516 632.802C508.946 632.802 456.809 610.503 410.869 590.836C407.206 589.265 403.991 587.019 401.438 584.255C398.885 581.491 397.048 578.282 396.053 574.833C395.079 571.288 394.84 567.571 395.353 563.928C395.866 560.285 397.117 556.797 399.02 553.689C401.778 549.525 405.657 546.168 410.192 543.964C414.727 541.76 419.772 540.779 424.811 541.113C429.85 541.447 434.719 543.085 438.977 545.881C443.235 548.676 446.736 552.532 449.146 557.111C450.622 559.706 452.461 562.059 454.607 564.097C456.845 566.143 459.352 567.86 462.05 569.199C467.426 571.911 473.326 573.329 479.305 573.351C485.283 573.373 491.193 571.998 496.586 569.313C499.284 567.974 501.791 566.257 504.029 564.211C506.175 562.173 508.014 559.82 509.49 557.225C511.899 552.646 515.401 548.79 519.659 545.995C523.917 543.199 528.786 541.561 533.825 541.227C538.864 540.893 543.909 541.874 548.444 544.078C552.979 546.282 556.858 549.639 559.616 553.803C561.519 556.911 562.77 560.399 563.283 564.042C563.796 567.685 563.557 571.402 562.583 574.947C561.588 578.396 559.751 581.605 557.198 584.369C554.645 587.133 551.43 589.379 547.767 590.95L547.767 590.836Z" fill="url(#paint0_linear_174_4403)"/>
+                            <path d="M711.696 295.13C711.696 295.13 681.813 331.265 647.455 354.619C613.097 377.973 565.306 396.667 565.306 396.667C565.306 396.667 551.764 387.279 541.442 373.008C531.121 358.737 515.332 323.891 515.332 323.891C515.332 323.891 537.787 300.337 562.402 276.621C587.017 252.905 633.162 220.805 633.162 220.805L711.696 295.13Z" fill="#FFDD00"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_174_4403" x1="441.744" y1="541.227" x2="441.744" y2="1178.09" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#0D0C22" stop-opacity="0"/>
+                                    <stop offset="1" stop-color="#0D0C22" stop-opacity="0.01"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        Support
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Pages -->
+    <main>
+        <!-- Home/Projects Page -->
+        <div id="projects" class="page active">
+            <div class="container">
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>Data Science & AI Portfolio</h1>
+                        <p>I'm a data scientist and AI engineer specializing in building production-grade machine learning systems, forecasting models, and LLM-powered applications. I focus on translating complex data into actionable insights and building tools that empower decision-makers.</p>
                     </div>
-                </div>
-                
-                <!-- QuantAgri -->
-                <div class="card">
-                    <div class="card-icon">🌾</div>
-                    <h3>QuantAgri – Agriculture Analytics</h3>
-                    <p class="card-type">Analytics & Forecasting Platform</p>
-                    <p>Decision-support tool combining exploratory analytics with predictive modeling for yield, pricing, and risk assessment.</p>
-                    <div class="card-links">
-                        <a href="https://quantagri-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
-                        <a href="../projects/quantagri-ag-analytics/" class="btn btn-secondary">Details</a>
+                </section>
+
+                <section id="about" class="about-section">
+                    <h2>Core Skills</h2>
+                    <div class="skills-list">
+                        <span class="skill-item">Machine Learning</span>
+                        <span class="skill-item">Time Series Forecasting</span>
+                        <span class="skill-item">LLM Applications</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Data Visualization</span>
+                        <span class="skill-item">Cloud Deployment</span>
                     </div>
-                </div>
+                </section>
+
+                <h2 class="section-title">Featured Projects</h2>
                 
-                <!-- PlanChat -->
-                <div class="card">
-                    <div class="card-icon">✈️</div>
-                    <h3>PlanChat AI – Document Assistant</h3>
-                    <p class="card-type">LLM-Powered Document Search</p>
-                    <p>AI assistant enabling construction professionals to search and interact with technical drawings using natural language.</p>
-                    <div class="card-links">
-                        <a href="https://planchat-ai-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
-                        <a href="../projects/planchat-ai-trip-planner/" class="btn btn-secondary">Details</a>
+                <div class="projects-grid">
+                    <!-- Skillzy -->
+                    <div class="project-card">
+                        <h3>Skillzy – Master the AI Language</h3>
+                        <p class="project-type">Generative AI Language Tutor</p>
+                        <p>An AI-powered language learning assistant that guides users through conversational practice with real-time feedback and adaptive tutoring.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">GCP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://skillzy-master-the-ai-language-422293089314.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
+                            <a href="projects/skillzy-ai-language-tutor/" class="btn btn-secondary">View Details</a>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- AnchorFlow -->
-                <div class="card">
-                    <div class="card-icon">⚓</div>
-                    <h3>AnchorFlow – Infrastructure Intelligence</h3>
-                    <p class="card-type">Energy Analytics Platform</p>
-                    <p>Platform for monitoring natural gas infrastructure, pipeline networks, and flow dynamics across the United States.</p>
-                    <div class="card-links">
-                        <a href="https://anchorflow-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
-                        <a href="../projects/anchorflow-financial-risk/" class="btn btn-secondary">Details</a>
+                    
+                    <!-- QuantAgri -->
+                    <div class="project-card">
+                        <h3>QuantAgri – Agriculture Analytics</h3>
+                        <p class="project-type">Analytics & Forecasting Platform</p>
+                        <p>Decision-support tool for agricultural stakeholders combining exploratory analytics with predictive modeling for yield, pricing, and risk.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">Streamlit</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://quantagri-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
+                            <a href="projects/quantagri-ag-analytics/" class="btn btn-secondary">View Details</a>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- MetalPulse -->
-                <div class="card">
-                    <div class="card-icon">🔩</div>
-                    <h3>MetalPulse – Metal Forecasting</h3>
-                    <p class="card-type">Demand/Price Forecasting System</p>
-                    <p>Forecasting system for metal industry KPIs with model comparison, backtesting, and scenario analysis capabilities.</p>
-                    <div class="card-links">
-                        <a href="https://metalpulse-smart-metal-forecasting-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
-                        <a href="../projects/metalpulse-metal-forecasting/" class="btn btn-secondary">Details</a>
+                    
+                    <!-- PlanChat -->
+                    <div class="project-card">
+                        <h3>PlanChat AI – Trip Planner</h3>
+                        <p class="project-type">LLM-Powered Planning Assistant</p>
+                        <p>AI assistant that builds personalized itineraries via conversation, demonstrating RAG workflows and structured generation.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">FastAPI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://planchat-ai-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
+                            <a href="projects/planchat-ai-trip-planner/" class="btn btn-secondary">View Details</a>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- NYC CRE -->
-                <div class="card">
-                    <div class="card-icon">🏢</div>
-                    <h3>NYC CRE Distress Pulse</h3>
-                    <p class="card-type">Real Estate Risk Monitoring</p>
-                    <p>Dashboard tracking distress signals in NYC commercial real estate with predictive risk indicators and geospatial mapping.</p>
-                    <div class="card-links">
-                        <a href="https://nyc-cre-distress-pulse-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
-                        <a href="../projects/nyc-cre-distress-pulse/" class="btn btn-secondary">Details</a>
+                    
+                    <!-- AnchorFlow -->
+                    <div class="project-card">
+                        <h3>AnchorFlow – Financial Risk</h3>
+                        <p class="project-type">Financial Analytics & Risk Visualization</p>
+                        <p>Platform for monitoring cashflows, liquidity, and risk indicators with forecasting and anomaly detection capabilities.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Prophet</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">Time Series</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://anchorflow-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
+                            <a href="projects/anchorflow-financial-risk/" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <!-- MetalPulse -->
+                    <div class="project-card">
+                        <h3>MetalPulse – Metal Forecasting</h3>
+                        <p class="project-type">Demand/Price Forecasting System</p>
+                        <p>Forecasting system for metal industry KPIs featuring model comparison, backtesting, and scenario analysis.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">Prophet</span>
+                            <span class="tech-tag">Forecasting</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://metalpulse-smart-metal-forecasting-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
+                            <a href="projects/metalpulse-metal-forecasting/" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <!-- NYC CRE -->
+                    <div class="project-card">
+                        <h3>NYC CRE Distress Pulse</h3>
+                        <p class="project-type">Real Estate Risk Monitoring</p>
+                        <p>Dashboard tracking distress signals in NYC commercial real estate, combining public data with predictive risk indicators.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">GeoPandas</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">Geospatial</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://nyc-cre-distress-pulse-278412187073.us-west1.run.app" class="btn btn-primary" target="_blank">Launch App</a>
+                            <a href="projects/nyc-cre-distress-pulse/" class="btn btn-secondary">View Details</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- Technical Articles -->
-        <section class="section">
-            <h2 class="section-title">📝 Technical Articles & Case Studies</h2>
-            <ul class="article-list">
-                <li class="article-item">
-                    <a href="anchorflow.html">AnchorFlow: Technical Case Study</a>
-                    <p class="date">December 2025</p>
-                    <p>Unified Telemetry & Intelligence Mesh for US Natural Gas Infrastructure. Deep dive into building grounded AI systems for real-time energy infrastructure monitoring and causal analysis.</p>
-                </li>
-                <li class="article-item">
-                    <div style="text-align: center; padding: 20px;">
-                        <h3 style="color: var(--color-primary); margin-bottom: 8px;">Coming Soon in 2026</h3>
-                        <p>More technical case studies, insights on AI infrastructure, and deep dives into environmental data systems.</p>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-section">
+                    <p>I'm a data scientist and AI engineer specializing in building production-grade machine learning systems, forecasting models, and LLM-powered applications. With over 12 years of experience in the environmental and geospatial field, I work at the intersection of climate resilience, geospatial analysis, and artificial intelligence as both a strategic leader and hands-on technical contributor.</p>
+                    
+                    <p>I thrive in collaborative, cross-functional environments where science, policy, and engineering meet, and where translating complex technical insights into clear, actionable decisions is critical to success.</p>
+                    
+                    <h3>Core Expertise</h3>
+                    <div class="skills-list">
+                        <span class="skill-item">Machine Learning</span>
+                        <span class="skill-item">Time Series Forecasting</span>
+                        <span class="skill-item">LLM Applications</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Data Visualization</span>
+                        <span class="skill-item">Cloud Deployment</span>
+                        <span class="skill-item">Geospatial Analysis</span>
+                        <span class="skill-item">Environmental Justice</span>
                     </div>
-                </li>
-            </ul>
-        </section>
-    </div>
-</body>
-</html>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <div class="container">
+                <section class="contact-section">
+                    <h2 class="section-title">Get In Touch</h2>
+                    
+                    <div class="contact-card">
+                        <h3>Let's Connect</h3>
+                        <p>Interested in collaborating on AI/ML projects, data science consulting, or have questions about my work? I'd love to hear from you.</p>
+                        <a href="mailto:consultrmk@gmail.com" class="email-link">
+                            consultrmk@gmail.com
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-contentill-item">Cloud Deployment</span>
+                        <span class="skill-item">Geospatial Analysis</sech-tag">Python</s
