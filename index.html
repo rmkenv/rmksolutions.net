@@ -1,10 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- SEO Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ryan Kmetz - Data Science & AI Portfolio</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Primary Meta Tags -->
+    <title>Ryan Kmetz | AI Engineer & Data Scientist | ML Systems & LLM Applications</title>
+    <meta name="title" content="Ryan Kmetz | AI Engineer & Data Scientist | ML Systems & LLM Applications">
+    <meta name="description" content="Data scientist and AI engineer specializing in production-grade machine learning systems, forecasting models, and LLM-powered applications. 12+ years experience in environmental and geospatial AI.">
+    <meta name="keywords" content="AI engineer, data scientist, machine learning, LLM applications, RAG systems, forecasting, geospatial analysis, Python, FastAPI, natural gas infrastructure, construction AI, agriculture analytics">
+    <meta name="author" content="Ryan Kmetz">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rmksolutions.net/">
+    <meta property="og:title" content="Ryan Kmetz | AI Engineer & Data Scientist">
+    <meta property="og:description" content="Specializing in production-grade ML systems, forecasting models, and LLM-powered applications. View my portfolio of AI/ML projects.">
+    <meta property="og:image" content="https://rmksolutions.net/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rmksolutions.net/">
+    <meta property="twitter:title" content="Ryan Kmetz | AI Engineer & Data Scientist">
+    <meta property="twitter:description" content="Specializing in production-grade ML systems, forecasting models, and LLM-powered applications.">
+    <meta property="twitter:image" content="https://rmksolutions.net/og-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rmksolutions.net/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ryan Kmetz",
+        "url": "https://rmksolutions.net",
+        "jobTitle": "AI Engineer & Data Scientist",
+        "description": "Data scientist and AI engineer specializing in production-grade machine learning systems",
+        "email": "consultrmk@gmail.com",
+        "sameAs": [
+            "https://github.com/rmkenv",
+            "https://www.linkedin.com/in/ryankmetz/"
+        ],
+        "knowsAbout": ["Machine Learning", "Artificial Intelligence", "LLM Applications", "Geospatial Analysis", "Forecasting", "Python"]
+    }
+    </script>
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap');
+
+        :root {
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #0088ff;
+            --dark-bg: #0a0a0f;
+            --card-bg: #12121a;
+            --card-hover: #1a1a28;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7b;
+            --border: #2a2a3a;
+            --glow: rgba(0, 255, 136, 0.2);
+            --shadow: rgba(0, 0, 0, 0.5);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,130 +81,284 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            color: var(--text-primary);
+            background: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 136, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--dark-bg) 100%);
+            border-bottom: 2px solid var(--border);
+            padding: 80px 40px;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            color: var(--primary);
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-family: 'Fira Code', monospace;
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+        }
+
+        .header-subtitle {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+            font-weight: 300;
             margin-bottom: 10px;
         }
 
-        header p {
-            font-size: 1.2em;
-            opacity: 0.95;
+        .header-tagline {
+            font-size: 1em;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
         }
 
+        /* Intro Section */
         .intro {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
         }
 
         .intro h2 {
-            color: #667eea;
-            margin-bottom: 15px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: 700;
         }
 
+        .intro p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        /* Skills Grid */
         .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 30px;
         }
 
         .skill-tag {
-            background: #f0f0f0;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            color: #555;
-        }
-
-        .projects-section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 2em;
-            color: #333;
-            margin-bottom: 30px;
+            background: rgba(0, 136, 255, 0.05);
+            border: 1px solid rgba(0, 136, 255, 0.3);
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            color: var(--secondary);
             text-align: center;
+            font-weight: 500;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 136, 255, 0.1);
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(0, 136, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 50px;
+            font-size: 0.9em;
+        }
+
+        /* Projects Grid */
+        .projects-section {
+            margin-bottom: 80px;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
 
+        /* Project Cards */
         .project-card {
-            background: white;
-            border-radius: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px var(--shadow), 0 0 40px var(--glow);
+            background: var(--card-hover);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
         }
 
         .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 136, 255, 0.05) 100%);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
         }
 
         .card-header h3 {
-            font-size: 1.4em;
+            font-size: 1.5em;
             margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 700;
         }
 
         .subtitle {
-            opacity: 0.9;
-            font-size: 0.95em;
-            font-weight: 500;
+            color: var(--primary);
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Fira Code', monospace;
         }
 
         .card-body {
-            padding: 25px;
+            padding: 30px;
         }
 
         .description {
-            color: #555;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
 
         .features {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .features h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 1em;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .features ul {
@@ -144,62 +367,132 @@
         }
 
         .features li {
-            padding: 5px 0;
-            padding-left: 20px;
+            padding: 8px 0;
+            padding-left: 24px;
             position: relative;
-            color: #666;
-        }
-
-        .features li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .tech-stack {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 6px;
+            color: var(--text-secondary);
             font-size: 0.9em;
         }
 
+        .features li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .tech-stack {
+            background: rgba(0, 136, 255, 0.05);
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-family: 'Fira Code', monospace;
+        }
+
         .tech-stack strong {
-            color: #667eea;
+            color: var(--secondary);
+        }
+
+        .tech-stack span {
+            color: var(--text-secondary);
         }
 
         .card-footer {
-            padding: 0 25px 25px;
+            padding: 0 30px 30px;
         }
 
         .btn-launch {
             display: block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--dark-bg);
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 6px;
+            padding: 14px 28px;
+            border-radius: 8px;
             text-align: center;
-            font-weight: 600;
-            transition: opacity 0.3s ease;
+            font-weight: 700;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-launch::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-launch:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-launch:hover {
-            opacity: 0.9;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+            transform: translateY(-2px);
         }
 
+        .btn-launch span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Section */
         .contact {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 60px 40px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.03) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
         }
 
         .contact h2 {
-            color: #667eea;
-            margin-bottom: 20px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .contact p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.1em;
         }
 
         .contact-links {
@@ -207,84 +500,141 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .contact-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #f0f0f0;
-            color: #333;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: rgba(0, 136, 255, 0.05);
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
             text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s ease;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
         }
 
         .contact-link:hover {
-            background: #667eea;
-            color: white;
+            background: var(--secondary);
+            color: var(--dark-bg);
+            box-shadow: 0 10px 30px rgba(0, 136, 255, 0.3);
+            transform: translateY(-3px);
         }
 
+        /* Footer */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #666;
+            padding: 60px 20px 40px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .header-subtitle {
+                font-size: 1.1em;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            header h1 {
+            .section-title {
                 font-size: 2em;
             }
 
             .contact-links {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+            }
+
+            .skills {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
         }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .project-card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Ryan Kmetz</h1>
-        <p>Data Science & AI Portfolio</p>
+        <div class="header-content">
+            <span class="tech-badge">◢ AI/ML Engineer ◣</span>
+            <h1>Ryan Kmetz</h1>
+            <p class="header-subtitle">Data Science & AI Portfolio</p>
+            <p class="header-tagline">// Production-Grade ML Systems & LLM Applications</p>
+        </div>
     </header>
 
     <div class="container">
         <section class="intro">
-            <h2>About Me</h2>
+            <h2>▸ About Me</h2>
             <p>I'm a data scientist and AI engineer specializing in building production-grade machine learning systems, forecasting models, and LLM-powered applications. With over 12 years of experience in the environmental and geospatial field, I work at the intersection of climate resilience, geospatial analysis, and artificial intelligence as both a strategic leader and hands-on technical contributor.</p>
-            <p style="margin-top: 15px;">I thrive in collaborative, cross-functional environments where science, policy, and engineering meet, and where translating complex technical insights into clear, actionable decisions is critical to success.</p>
+            <p>I thrive in collaborative, cross-functional environments where science, policy, and engineering meet, and where translating complex technical insights into clear, actionable decisions is critical to success.</p>
 
             <div class="skills">
-                <span class="skill-tag">Machine Learning</span>
-                <span class="skill-tag">LLM Applications</span>
-                <span class="skill-tag">Time Series Forecasting</span>
-                <span class="skill-tag">Geospatial Analysis</span>
+                <span class="skill-tag">ML/AI</span>
+                <span class="skill-tag">LLM Apps</span>
+                <span class="skill-tag">Forecasting</span>
+                <span class="skill-tag">RAG Systems</span>
+                <span class="skill-tag">Geospatial</span>
                 <span class="skill-tag">Python</span>
                 <span class="skill-tag">FastAPI</span>
                 <span class="skill-tag">Streamlit</span>
                 <span class="skill-tag">GCP</span>
-                <span class="skill-tag">RAG Systems</span>
-                <span class="skill-tag">Data Visualization</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">LangChain</span>
+                <span class="skill-tag">PyTorch</span>
             </div>
         </section>
 
         <section class="projects-section">
             <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">// Production AI/ML Systems & Applications</p>
 
             <div class="projects-grid">
                 <!-- Skillzy Card -->
-                <div class="project-card">
+                <article class="project-card" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <div class="card-header">
-                        <h3>🎓 Skillzy – Master the AI Language</h3>
+                        <span class="card-icon">🎓</span>
+                        <h3 itemprop="name">Skillzy – Master the AI Language</h3>
                         <p class="subtitle">Generative AI Language Tutor</p>
                     </div>
                     <div class="card-body">
-                        <p class="description">An AI-powered language learning assistant that guides users through conversational practice with real-time feedback and adaptive tutoring.</p>
+                        <p class="description" itemprop="description">An AI-powered language learning assistant that guides users through conversational practice with real-time feedback and adaptive tutoring.</p>
                         <div class="features">
                             <h4>Key Features:</h4>
                             <ul>
@@ -294,22 +644,25 @@
                             </ul>
                         </div>
                         <div class="tech-stack">
-                            <p><strong>Tech Stack:</strong> Python, FastAPI, LLM APIs, GCP Cloud Run</p>
+                            <p><strong>Tech Stack:</strong> <span>Python, FastAPI, LLM APIs, GCP Cloud Run</span></p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="https://skillzy-master-the-ai-language-422293089314.us-west1.run.app/" target="_blank" class="btn-launch">Launch App</a>
+                        <a href="https://skillzy-master-the-ai-language-422293089314.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-launch" itemprop="url">
+                            <span>Launch App →</span>
+                        </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- QuantAgri Card -->
-                <div class="project-card">
+                <article class="project-card" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <div class="card-header">
-                        <h3>🌾 QuantAgri – Agriculture Analytics</h3>
+                        <span class="card-icon">🌾</span>
+                        <h3 itemprop="name">QuantAgri – Agriculture Analytics</h3>
                         <p class="subtitle">Analytics & Forecasting Platform</p>
                     </div>
                     <div class="card-body">
-                        <p class="description">Decision-support tool for agricultural stakeholders combining exploratory analytics with predictive modeling for yield, pricing, and risk assessment.</p>
+                        <p class="description" itemprop="description">Decision-support tool for agricultural stakeholders combining exploratory analytics with predictive modeling for yield, pricing, and risk assessment.</p>
                         <div class="features">
                             <h4>Key Features:</h4>
                             <ul>
@@ -319,22 +672,25 @@
                             </ul>
                         </div>
                         <div class="tech-stack">
-                            <p><strong>Tech Stack:</strong> Python, scikit-learn, Plotly, Streamlit, GCP</p>
+                            <p><strong>Tech Stack:</strong> <span>Python, scikit-learn, Plotly, Streamlit, GCP</span></p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="https://quantagri-278412187073.us-west1.run.app/" target="_blank" class="btn-launch">Launch App</a>
+                        <a href="https://quantagri-278412187073.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-launch" itemprop="url">
+                            <span>Launch App →</span>
+                        </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- PlanChat AI Card -->
-                <div class="project-card">
+                <article class="project-card" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <div class="card-header">
-                        <h3>📐 PlanChat AI – Construction Document Assistant</h3>
+                        <span class="card-icon">📐</span>
+                        <h3 itemprop="name">PlanChat AI – Construction Document Assistant</h3>
                         <p class="subtitle">LLM-Powered Document Search & Chat</p>
                     </div>
                     <div class="card-body">
-                        <p class="description">AI assistant enabling construction and engineering professionals to search and interact with as-built drawings and technical documentation using natural language.</p>
+                        <p class="description" itemprop="description">AI assistant enabling construction and engineering professionals to search and interact with as-built drawings and technical documentation using natural language.</p>
                         <div class="features">
                             <h4>Key Features:</h4>
                             <ul>
@@ -344,22 +700,25 @@
                             </ul>
                         </div>
                         <div class="tech-stack">
-                            <p><strong>Tech Stack:</strong> Python, LangChain, FastAPI, GCP Cloud Run</p>
+                            <p><strong>Tech Stack:</strong> <span>Python, LangChain, FastAPI, GCP Cloud Run</span></p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="https://planchat-ai-278412187073.us-west1.run.app/" target="_blank" class="btn-launch">Launch App</a>
+                        <a href="https://planchat-ai-278412187073.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-launch" itemprop="url">
+                            <span>Launch App →</span>
+                        </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- AnchorFlow Card -->
-                <div class="project-card">
+                <article class="project-card" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <div class="card-header">
-                        <h3>⚓ AnchorFlow – Natural Gas Infrastructure Intelligence</h3>
+                        <span class="card-icon">⚓</span>
+                        <h3 itemprop="name">AnchorFlow – Natural Gas Infrastructure Intelligence</h3>
                         <p class="subtitle">Energy Analytics & Infrastructure Visualization</p>
                     </div>
                     <div class="card-body">
-                        <p class="description">Platform for monitoring and analyzing natural gas infrastructure, pipeline networks, and flow dynamics across the United States.</p>
+                        <p class="description" itemprop="description">Platform for monitoring and analyzing natural gas infrastructure, pipeline networks, and flow dynamics across the United States.</p>
                         <div class="features">
                             <h4>Key Features:</h4>
                             <ul>
@@ -370,22 +729,25 @@
                             </ul>
                         </div>
                         <div class="tech-stack">
-                            <p><strong>Tech Stack:</strong> Python, Prophet, Plotly, GeoPandas, GCP</p>
+                            <p><strong>Tech Stack:</strong> <span>Python, Prophet, Plotly, GeoPandas, GCP</span></p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="https://anchorflow-278412187073.us-west1.run.app/" target="_blank" class="btn-launch">Launch App</a>
+                        <a href="https://anchorflow-278412187073.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-launch" itemprop="url">
+                            <span>Launch App →</span>
+                        </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- MetalPulse Card -->
-                <div class="project-card">
+                <article class="project-card" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <div class="card-header">
-                        <h3>🔩 MetalPulse – Smart Metal Forecasting</h3>
+                        <span class="card-icon">🔩</span>
+                        <h3 itemprop="name">MetalPulse – Smart Metal Forecasting</h3>
                         <p class="subtitle">Demand/Price Forecasting System</p>
                     </div>
                     <div class="card-body">
-                        <p class="description">Forecasting system for metal industry KPIs featuring model comparison, backtesting, and scenario analysis for demand, pricing, and capacity planning.</p>
+                        <p class="description" itemprop="description">Forecasting system for metal industry KPIs featuring model comparison, backtesting, and scenario analysis for demand, pricing, and capacity planning.</p>
                         <div class="features">
                             <h4>Key Features:</h4>
                             <ul>
@@ -395,22 +757,25 @@
                             </ul>
                         </div>
                         <div class="tech-stack">
-                            <p><strong>Tech Stack:</strong> Python, scikit-learn, Prophet, Pandas, Plotly</p>
+                            <p><strong>Tech Stack:</strong> <span>Python, scikit-learn, Prophet, Pandas, Plotly</span></p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="https://metalpulse-smart-metal-forecasting-278412187073.us-west1.run.app/" target="_blank" class="btn-launch">Launch App</a>
+                        <a href="https://metalpulse-smart-metal-forecasting-278412187073.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-launch" itemprop="url">
+                            <span>Launch App →</span>
+                        </a>
                     </div>
-                </div>
+                </article>
 
                 <!-- NYC CRE Distress Pulse Card -->
-                <div class="project-card">
+                <article class="project-card" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <div class="card-header">
-                        <h3>🏢 NYC CRE Distress Pulse</h3>
+                        <span class="card-icon">🏢</span>
+                        <h3 itemprop="name">NYC CRE Distress Pulse</h3>
                         <p class="subtitle">Real Estate Risk Monitoring Dashboard</p>
                     </div>
                     <div class="card-body">
-                        <p class="description">Dashboard tracking distress signals in NYC commercial real estate, combining public data with predictive risk indicators and geospatial visualization.</p>
+                        <p class="description" itemprop="description">Dashboard tracking distress signals in NYC commercial real estate, combining public data with predictive risk indicators and geospatial visualization.</p>
                         <div class="features">
                             <h4>Key Features:</h4>
                             <ul>
@@ -420,31 +785,43 @@
                             </ul>
                         </div>
                         <div class="tech-stack">
-                            <p><strong>Tech Stack:</strong> Python, Pandas, GeoPandas, Plotly, Streamlit, GCP</p>
+                            <p><strong>Tech Stack:</strong> <span>Python, Pandas, GeoPandas, Plotly, Streamlit, GCP</span></p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="https://nyc-cre-distress-pulse-278412187073.us-west1.run.app/" target="_blank" class="btn-launch">Launch App</a>
+                        <a href="https://nyc-cre-distress-pulse-278412187073.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="btn-launch" itemprop="url">
+                            <span>Launch App →</span>
+                        </a>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
         <section class="contact">
-            <h2>Get In Touch</h2>
-            <p>Interested in collaborating on AI/ML projects, data science consulting, or have questions about my work? I'd love to hear from you.</p>
+            <div class="contact-content">
+                <h2>▸ Get In Touch</h2>
+                <p>Interested in collaborating on AI/ML projects, data science consulting, or have questions about my work?<br>Let's build something together.</p>
 
-            <div class="contact-links">
-                <a href="https://github.com/rmkenv" target="_blank" class="contact-link">GitHub</a>
-                <a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" class="contact-link">LinkedIn</a>
-                <a href="mailto:consultrmk@gmail.com" class="contact-link">Email</a>
-                <a href="https://buymeacoffee.com/kmetzrm" target="_blank" class="contact-link">Buy Me a Coffee</a>
+                <div class="contact-links">
+                    <a href="https://github.com/rmkenv" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ryankmetz/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:consultrmk@gmail.com" class="contact-link">
+                        <span>Email</span>
+                    </a>
+                    <a href="https://buymeacoffee.com/kmetzrm" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <span>Support</span>
+                    </a>
+                </div>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Ryan Kmetz. All rights reserved.</p>
+        <p>© 2026 Ryan Kmetz // All Rights Reserved // Built with AI</p>
     </footer>
 </body>
 </html>
